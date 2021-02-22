@@ -48,9 +48,13 @@ public class InterfazPrincipalF extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Imagenes/tittle.png"))); // NOI18N
         jLabel3.setText("tittle");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 1060, 290));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 590, -1, -1));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 1060, 290));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Imagenes/Circle.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 40, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Imagenes/Bar.jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 560, -1, 20));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Iconos/about us.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
