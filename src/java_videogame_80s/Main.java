@@ -6,8 +6,7 @@ public class Main {
 
    
     public static void main(String[] args) {
-        InterfazPrincipalF inter = new InterfazPrincipalF();
-        inter.setVisible(true);
+        new InterfazPrincipalF().setVisible(true);
     }
     
 }
