@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java_videogame_80s;
+package java_videogame_80s.interfaces;
 
 /**
  *
@@ -39,7 +39,6 @@ public class InterfazPrincipalF extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1290, 730));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(52, 52, 60));

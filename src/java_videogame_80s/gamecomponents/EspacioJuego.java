@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java_videogame_80s;
+package java_videogame_80s.gamecomponents;
 
+import java_videogame_80s.gamecomponents.Tabla;
+import java_videogame_80s.gamecomponents.Bola;
+import java_videogame_80s.gamecomponents.Ladrillo;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
