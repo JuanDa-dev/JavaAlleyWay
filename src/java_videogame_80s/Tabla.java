@@ -12,13 +12,15 @@ import java.awt.event.KeyEvent;
  * @author Edilberto
  */
 public class Tabla {
-    
+
     private int x;//coordenada X de la tabla
     private int y;//coordenada Y de la tabla
-    
-    public Tabla(int x, int y){//Recibe las coordenadas X y Y de la tabla
+    private boolean move;//iterador entre mover o estar quieto
+
+    public Tabla(int x, int y) {//Recibe las coordenadas X y Y de la tabla
         this.x = x;
         this.y = y;
+        move = true;
     }
 
     public int getX() {
@@ -36,14 +38,28 @@ public class Tabla {
     public void setY(int y) {
         this.y = y;
     }
-    
-    protected void mover(KeyEvent e){//metodo para mover la barra
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-            if(x < 330)x+=5;
-        }
-        if(e.getKeyCode() == KeyEvent.VK_LEFT){
-            if(x > 0)x-=5;
+
+    public void setMove(boolean move) {
+        this.move = move;
+    }
+
+    public boolean isMove() {
+        return move;
+    }
+
+    protected void mover(KeyEvent e) {//metodo para mover la barra
+        if (move) {
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                if (x < 330) {
+                    x += 5;
+                }
+            }
+            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                if (x > 0) {
+                    x -= 5;
+                }
+            }
         }
     }
-    
+
 }

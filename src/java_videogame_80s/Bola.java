@@ -12,17 +12,17 @@ import java.util.logging.Logger;
  *
  * @author juanq
  */
-public class Bola implements Runnable{
-    
+public class Bola implements Runnable {
+
     private int x;//Coordenada X de la bola
     private int y;//Coordenada Y de la bola
-    private int limiteX;//Limite X del frame
-    private int limiteY;//Limite Y del frame
+    private final int limiteX;//Limite X del frame
+    private final int limiteY;//Limite Y del frame
     private int cambioX = 1;//variable que hace ir a la izquierda o derecha la bola
     private int cambioY = -1;//variable que hace subir o bajar la bola
     Thread hilo;//Instancio un objeto
     private Tabla barra;
-    
+
     public Bola(int x, int y, int limiteX, int limiteY, Tabla barra) {//Constructor de la clase Bola
         this.x = x;
         this.y = y;
@@ -48,7 +48,7 @@ public class Bola implements Runnable{
     public void setY(int y) {
         this.y = y;
     }
-    
+
     public void inicio() {//metodo que comienza el hilo
         hilo.start();
     }
@@ -74,8 +74,8 @@ public class Bola implements Runnable{
                 if (y < 25) {//si esta menos del limite avanza
                     cambioY = 1;
                 }
-                if(x > barra.getX() - 7.5 && x < barra.getX() + 92.5 && y == barra.getY() - 15){
-                   cambioY = -1; 
+                if (x > barra.getX() - 7.5 && x < barra.getX() + 92.5 && y == barra.getY() - 15) {
+                    cambioY = -1;
                 }
                 x += cambioX;
                 y += cambioY;
@@ -85,5 +85,5 @@ public class Bola implements Runnable{
             Logger.getLogger(Bola.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

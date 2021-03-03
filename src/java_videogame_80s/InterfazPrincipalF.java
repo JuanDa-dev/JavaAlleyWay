@@ -14,8 +14,13 @@ public class InterfazPrincipalF extends javax.swing.JFrame {
     /**
      * Creates new form InterfazPrincipalF
      */
+    
+    EspacioJuego space;
+    
     public InterfazPrincipalF() {
         initComponents();
+        setLocationRelativeTo(null);
+        space=new EspacioJuego(this);
     }
 
     /**
@@ -32,10 +37,11 @@ public class InterfazPrincipalF extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        startButton = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1290, 730));
@@ -59,29 +65,45 @@ public class InterfazPrincipalF extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Iconos/about us.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Bk", 1, 70)); // NOI18N
-        jLabel8.setText("START");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 570, 300, 70));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 5)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Iconos/play.png"))); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(160, 120));
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 550, 160, 120));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Imagenes/startBar.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 630, 240));
-
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(212, 183, 27));
         jLabel6.setText("V.1.1");
         jLabel6.setPreferredSize(new java.awt.Dimension(50, 50));
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 20, 100, 80));
 
+        startButton.setBackground(new java.awt.Color(52, 52, 60));
+        startButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        startButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                startButtonMouseClicked(evt);
+            }
+        });
+        startButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 5)); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Iconos/play.png"))); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(160, 120));
+        startButton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Roboto Bk", 1, 70)); // NOI18N
+        jLabel8.setText("START");
+        startButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 300, 70));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Imagenes/startBar.png"))); // NOI18N
+        startButton.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-180, -50, 630, 250));
+
+        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 540, 410, 130));
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1282, 723);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void startButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startButtonMouseClicked
+       space.setVisible(true);//cierra la c¿interface principal
+       this.setVisible(false);//Abre el espacio de juego
+    }//GEN-LAST:event_startButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -128,5 +150,6 @@ public class InterfazPrincipalF extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel startButton;
     // End of variables declaration//GEN-END:variables
 }
