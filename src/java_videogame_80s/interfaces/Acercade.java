@@ -22,6 +22,7 @@ public class Acercade extends javax.swing.JFrame {
         dev5_title = new javax.swing.JLabel();
         aboutus_button = new javax.swing.JPanel();
         aboutus_title = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -79,6 +80,10 @@ public class Acercade extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(155, 152, 152));
+        jLabel1.setText("Miguel A. Altamar Rodriguez");
+
         javax.swing.GroupLayout aboutus_contentLayout = new javax.swing.GroupLayout(aboutus_content);
         aboutus_content.setLayout(aboutus_contentLayout);
         aboutus_contentLayout.setHorizontalGroup(
@@ -92,11 +97,12 @@ public class Acercade extends javax.swing.JFrame {
                             .addGroup(aboutus_contentLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addGroup(aboutus_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dev2_title)
-                                    .addComponent(dev1_tittle)
                                     .addComponent(dev3_title)
                                     .addComponent(dev4_title)
-                                    .addComponent(dev5_title)))))
+                                    .addComponent(dev5_title)
+                                    .addComponent(jLabel1)
+                                    .addComponent(dev1_tittle)
+                                    .addComponent(dev2_title)))))
                     .addGroup(aboutus_contentLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(aboutus_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -107,6 +113,8 @@ public class Acercade extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aboutus_contentLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(devs_tittle)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dev1_tittle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -117,7 +125,7 @@ public class Acercade extends javax.swing.JFrame {
                 .addComponent(dev4_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dev5_title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
                 .addComponent(aboutus_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -187,5 +195,6 @@ public class Acercade extends javax.swing.JFrame {
     private javax.swing.JLabel dev4_title;
     private javax.swing.JLabel dev5_title;
     private javax.swing.JLabel devs_tittle;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
