@@ -20,9 +20,9 @@ public class Acercade extends javax.swing.JFrame {
         dev3_title = new javax.swing.JLabel();
         dev4_title = new javax.swing.JLabel();
         dev5_title = new javax.swing.JLabel();
+        dev6_tittle = new javax.swing.JLabel();
         aboutus_button = new javax.swing.JPanel();
         aboutus_title = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -53,6 +53,10 @@ public class Acercade extends javax.swing.JFrame {
         dev5_title.setForeground(new java.awt.Color(155, 152, 152));
         dev5_title.setText("Edilberto M. Rodriguez Fontalvo");
 
+        dev6_tittle.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        dev6_tittle.setForeground(new java.awt.Color(155, 152, 152));
+        dev6_tittle.setText("Miguel A. Altamar Rodriguez");
+
         aboutus_button.setBackground(new java.awt.Color(155, 152, 152));
         aboutus_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,10 +84,6 @@ public class Acercade extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(155, 152, 152));
-        jLabel1.setText("Miguel A. Altamar Rodriguez");
-
         javax.swing.GroupLayout aboutus_contentLayout = new javax.swing.GroupLayout(aboutus_content);
         aboutus_content.setLayout(aboutus_contentLayout);
         aboutus_contentLayout.setHorizontalGroup(
@@ -100,7 +100,7 @@ public class Acercade extends javax.swing.JFrame {
                                     .addComponent(dev3_title)
                                     .addComponent(dev4_title)
                                     .addComponent(dev5_title)
-                                    .addComponent(jLabel1)
+                                    .addComponent(dev6_tittle)
                                     .addComponent(dev1_tittle)
                                     .addComponent(dev2_title)))))
                     .addGroup(aboutus_contentLayout.createSequentialGroup()
@@ -114,7 +114,7 @@ public class Acercade extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(devs_tittle)
                 .addGap(13, 13, 13)
-                .addComponent(jLabel1)
+                .addComponent(dev6_tittle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dev1_tittle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -147,6 +147,8 @@ public class Acercade extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aboutus_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutus_buttonMouseClicked
+        InterfazPrincipal interfazPrincipal = new InterfazPrincipal(); 
+        interfazPrincipal.setVisible(true);
         menuActions.setHomeView();
     }//GEN-LAST:event_aboutus_buttonMouseClicked
 
@@ -194,7 +196,7 @@ public class Acercade extends javax.swing.JFrame {
     private javax.swing.JLabel dev3_title;
     private javax.swing.JLabel dev4_title;
     private javax.swing.JLabel dev5_title;
+    private javax.swing.JLabel dev6_tittle;
     private javax.swing.JLabel devs_tittle;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

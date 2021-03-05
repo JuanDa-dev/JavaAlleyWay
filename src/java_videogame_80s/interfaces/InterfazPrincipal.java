@@ -1,51 +1,15 @@
-
 package java_videogame_80s.interfaces;
 
 import java_videogame_80s.gamecomponents.EspacioJuego;
 
+public class InterfazPrincipal extends javax.swing.JFrame {
 
-public class InterfazPrincipal extends javax.swing.JPanel {
+    private MenuActions menuActions;
+    private Acercade aboutUsView;
 
-    private MenuActions menuActions; 
-    private Acercade aboutUsView; 
-    
     public InterfazPrincipal() {
-        this.menuActions = menuActions; 
         initComponents();
-    }
-
-    
-
- public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InterfazPrincipal().setVisible(true);
-            }
-        });
+        this.menuActions = menuActions;
     }
 
     /**
@@ -57,6 +21,7 @@ public class InterfazPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         title_layout = new javax.swing.JLabel();
         bar1 = new javax.swing.JLabel();
         circle = new javax.swing.JLabel();
@@ -66,18 +31,30 @@ public class InterfazPrincipal extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(52, 52, 60));
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        title_layout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/Images/title_layour.png"))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(52, 52, 60));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
 
-        bar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/Images/Bar.jpg"))); // NOI18N
+        title_layout.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Images\\title_layour.png")); // NOI18N
 
-        circle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/Images/Circle.png"))); // NOI18N
+        bar1.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Images\\Bar.jpg")); // NOI18N
+
+        circle.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Images\\Circle.png")); // NOI18N
 
         aboutus_button.setBackground(new java.awt.Color(52, 52, 60));
+        aboutus_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aboutus_buttonMouseClicked(evt);
+            }
+        });
 
-        aboutus_title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/Icons/about us.png"))); // NOI18N
+        aboutus_title.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Icons\\about us.png")); // NOI18N
+        aboutus_title.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aboutus_titleMouseClicked(evt);
+            }
+        });
         aboutus_button.add(aboutus_title);
 
         empezar_button.setBackground(new java.awt.Color(155, 152, 152));
@@ -90,7 +67,7 @@ public class InterfazPrincipal extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         jLabel1.setText("EMPEZAR");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/Icons/play.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Icons\\play.png")); // NOI18N
 
         javax.swing.GroupLayout empezar_buttonLayout = new javax.swing.GroupLayout(empezar_button);
         empezar_button.setLayout(empezar_buttonLayout);
@@ -113,58 +90,125 @@ public class InterfazPrincipal extends javax.swing.JPanel {
                 .addGap(41, 41, 41))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(bar1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(empezar_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(aboutus_button, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(116, 116, 116)
                         .addComponent(title_layout, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(239, 239, 239)
                         .addComponent(circle)))
                 .addContainerGap(119, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(aboutus_button, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(178, 178, 178))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(title_layout, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(circle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(bar1)
                         .addGap(60, 60, 60))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(empezar_button, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34))))
         );
 
-        empezar_button.getAccessibleContext().setAccessibleName("empezar");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void empezar_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empezar_buttonMouseClicked
-        EspacioJuego espacioJuego = new EspacioJuego(); 
+        EspacioJuego espacioJuego = new EspacioJuego();
         espacioJuego.setVisible(true);
         menuActions.closeMainMenu();
     }//GEN-LAST:event_empezar_buttonMouseClicked
 
+    private void aboutus_titleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutus_titleMouseClicked
+        Acercade acercade = new Acercade();
+        acercade.setVisible(true);
+        menuActions.closeMainMenu();    }//GEN-LAST:event_aboutus_titleMouseClicked
+
+    private void aboutus_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutus_buttonMouseClicked
+        Acercade acercade = new Acercade();
+        acercade.setVisible(true);
+        menuActions.closeMainMenu();
+    }//GEN-LAST:event_aboutus_buttonMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new InterfazPrincipal().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel aboutus_button;
@@ -174,6 +218,7 @@ public class InterfazPrincipal extends javax.swing.JPanel {
     private javax.swing.JPanel empezar_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel title_layout;
     // End of variables declaration//GEN-END:variables
 }
