@@ -1,7 +1,5 @@
 package java_videogame_80s.interfaces;
 
-import java_videogame_80s.gamecomponents.EspacioJuego;
-
 public class InterfazPrincipal extends javax.swing.JFrame {
 
     private MenuActions menuActions;
@@ -32,15 +30,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(52, 52, 60));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
-
-        title_layout.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Images\\title_layour.png")); // NOI18N
-
-        bar1.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Images\\Bar.jpg")); // NOI18N
-
-        circle.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Images\\Circle.png")); // NOI18N
 
         aboutus_button.setBackground(new java.awt.Color(52, 52, 60));
         aboutus_button.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -49,7 +42,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             }
         });
 
-        aboutus_title.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Icons\\about us.png")); // NOI18N
         aboutus_title.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 aboutus_titleMouseClicked(evt);
@@ -66,8 +58,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         jLabel1.setText("EMPEZAR");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanq\\Documents\\NetBeansProjects\\Java_Project_AlleyWay\\src\\data\\Icons\\play.png")); // NOI18N
 
         javax.swing.GroupLayout empezar_buttonLayout = new javax.swing.GroupLayout(empezar_button);
         empezar_button.setLayout(empezar_buttonLayout);
@@ -123,7 +113,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                         .addComponent(title_layout, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(circle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(bar1)
@@ -158,8 +148,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void empezar_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empezar_buttonMouseClicked
-        EspacioJuego espacioJuego = new EspacioJuego();
-        espacioJuego.setVisible(true);
+        EspacioDeJuego espaciodeJuego = new EspacioDeJuego();
+        espaciodeJuego.setVisible(true);
         menuActions.closeMainMenu();
     }//GEN-LAST:event_empezar_buttonMouseClicked
 

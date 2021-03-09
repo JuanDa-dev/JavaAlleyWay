@@ -31,6 +31,7 @@ public class MenuJuego extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(300, 300));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(155, 152, 152));
 
