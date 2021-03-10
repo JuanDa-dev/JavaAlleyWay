@@ -2,10 +2,9 @@ package java_videogame_80s.interfaces;
 
 public class Acercade extends javax.swing.JFrame {
 
-    private MenuActions menuActions;
+  
 
-    public Acercade() {
-        this.menuActions = menuActions; 
+    public Acercade() { 
         initComponents();
     }
 
@@ -148,9 +147,9 @@ public class Acercade extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aboutus_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutus_buttonMouseClicked
-        InterfazPrincipal interfazPrincipal = new InterfazPrincipal(); 
-        interfazPrincipal.setVisible(true);
-        menuActions.setHomeView();
+       InterfazPrincipal interfazPrincipal = new InterfazPrincipal(); 
+       interfazPrincipal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_aboutus_buttonMouseClicked
 
     /**

@@ -1,13 +1,24 @@
 package java_videogame_80s.interfaces;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java_videogame_80s.gamecomponents.EspacioDeJuego;
+import java_videogame_80s.interfaces.InterfazDeControl;
+
 public class InterfazPrincipal extends javax.swing.JFrame {
 
-    private MenuActions menuActions;
     private Acercade aboutUsView;
 
     public InterfazPrincipal() {
         initComponents();
-        this.menuActions = menuActions;
+        centreWindow(); 
+    }
+
+    private void centreWindow() {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        this.setLocation(x, y - 25);
     }
 
     /**
@@ -39,12 +50,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         aboutus_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 aboutus_buttonMouseClicked(evt);
-            }
-        });
-
-        aboutus_title.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                aboutus_titleMouseClicked(evt);
             }
         });
         aboutus_button.add(aboutus_title);
@@ -150,18 +155,15 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void empezar_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empezar_buttonMouseClicked
         EspacioDeJuego espaciodeJuego = new EspacioDeJuego();
         espaciodeJuego.setVisible(true);
-        menuActions.closeMainMenu();
+        InterfazDeControl interfazDeControl = new InterfazDeControl();
+        interfazDeControl.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_empezar_buttonMouseClicked
 
-    private void aboutus_titleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutus_titleMouseClicked
-        Acercade acercade = new Acercade();
-        acercade.setVisible(true);
-        menuActions.closeMainMenu();    }//GEN-LAST:event_aboutus_titleMouseClicked
-
     private void aboutus_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutus_buttonMouseClicked
-        Acercade acercade = new Acercade();
-        acercade.setVisible(true);
-        menuActions.closeMainMenu();
+        Acercade acercaDe = new Acercade();
+        acercaDe.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_aboutus_buttonMouseClicked
 
     /**

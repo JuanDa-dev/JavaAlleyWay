@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package java_videogame_80s.interfaces;
+
+package java_videogame_80s.gamecomponents;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -18,10 +14,7 @@ import java_videogame_80s.gamecomponents.Bola;
 import java_videogame_80s.gamecomponents.Ladrillo;
 import java_videogame_80s.gamecomponents.Tabla;
 
-/**
- *
- * @author Edilberto
- */
+
 public class EspacioDeJuego extends javax.swing.JFrame implements KeyListener {
 
     private int x = 200, y = 665;//coordenadas X y Y de la bola iniciales
@@ -176,7 +169,6 @@ public class EspacioDeJuego extends javax.swing.JFrame implements KeyListener {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);//Para no dejar rastro
         g.setColor(new Color(52, 52, 60));
         g.fillRect(0, 0, 415, 720);
         Toolkit t = Toolkit.getDefaultToolkit();//Obtengo un objeto de la clase toolkit
