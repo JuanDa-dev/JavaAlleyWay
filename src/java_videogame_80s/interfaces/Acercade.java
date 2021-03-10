@@ -26,6 +26,7 @@ public class Acercade extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
 
         aboutus_content.setBackground(new java.awt.Color(52, 52, 60));
 
