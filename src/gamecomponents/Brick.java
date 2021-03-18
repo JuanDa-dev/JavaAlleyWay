@@ -1,13 +1,13 @@
 
-package java_videogame_80s.gamecomponents;
+package gamecomponents;
 
 
-public class Ladrillo {
+public class Brick {
     
     private int posX;//Coordenada X del ladrillo
     private int posY;//Coordenada Y del ladrillo
 
-    public Ladrillo(int posX, int posY) {//Recibe las coordenadas X y Y de un ladrillo
+    public Brick(int posX, int posY) {//Recibe las coordenadas X y Y de un ladrillo
         this.posX = posX;
         this.posY = posY;
     }

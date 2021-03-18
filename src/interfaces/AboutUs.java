@@ -1,11 +1,20 @@
-package java_videogame_80s.interfaces;
+package interfaces;
 
-public class Acercade extends javax.swing.JFrame {
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
-  
+public class AboutUs extends javax.swing.JFrame {
 
-    public Acercade() { 
+    public AboutUs() {
         initComponents();
+        centreWindow(); 
+    }
+
+    private void centreWindow() {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        this.setLocation(x, y - 25);
     }
 
     @SuppressWarnings("unchecked")
@@ -20,8 +29,7 @@ public class Acercade extends javax.swing.JFrame {
         dev4_title = new javax.swing.JLabel();
         dev5_title = new javax.swing.JLabel();
         dev6_tittle = new javax.swing.JLabel();
-        aboutus_button = new javax.swing.JPanel();
-        aboutus_title = new javax.swing.JLabel();
+        returnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -57,55 +65,33 @@ public class Acercade extends javax.swing.JFrame {
         dev6_tittle.setForeground(new java.awt.Color(155, 152, 152));
         dev6_tittle.setText("Miguel A. Altamar Rodriguez");
 
-        aboutus_button.setBackground(new java.awt.Color(155, 152, 152));
-        aboutus_button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                aboutus_buttonMouseClicked(evt);
+        returnButton.setBackground(new java.awt.Color(155, 152, 152));
+        returnButton.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        returnButton.setText("Regresar");
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnButtonActionPerformed(evt);
             }
         });
-
-        aboutus_title.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
-        aboutus_title.setText("Regresar");
-
-        javax.swing.GroupLayout aboutus_buttonLayout = new javax.swing.GroupLayout(aboutus_button);
-        aboutus_button.setLayout(aboutus_buttonLayout);
-        aboutus_buttonLayout.setHorizontalGroup(
-            aboutus_buttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(aboutus_buttonLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(aboutus_title)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        aboutus_buttonLayout.setVerticalGroup(
-            aboutus_buttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(aboutus_buttonLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(aboutus_title)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout aboutus_contentLayout = new javax.swing.GroupLayout(aboutus_content);
         aboutus_content.setLayout(aboutus_contentLayout);
         aboutus_contentLayout.setHorizontalGroup(
             aboutus_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(aboutus_contentLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(aboutus_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(devs_tittle)
                     .addGroup(aboutus_contentLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(10, 10, 10)
                         .addGroup(aboutus_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(devs_tittle)
-                            .addGroup(aboutus_contentLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(aboutus_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dev3_title)
-                                    .addComponent(dev4_title)
-                                    .addComponent(dev5_title)
-                                    .addComponent(dev6_tittle)
-                                    .addComponent(dev1_tittle)
-                                    .addComponent(dev2_title)))))
-                    .addGroup(aboutus_contentLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(aboutus_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(dev3_title)
+                            .addComponent(dev4_title)
+                            .addComponent(dev5_title)
+                            .addComponent(dev6_tittle)
+                            .addComponent(dev1_tittle)
+                            .addComponent(dev2_title))))
                 .addContainerGap(537, Short.MAX_VALUE))
         );
         aboutus_contentLayout.setVerticalGroup(
@@ -125,12 +111,10 @@ public class Acercade extends javax.swing.JFrame {
                 .addComponent(dev4_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dev5_title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
-                .addComponent(aboutus_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
-
-        aboutus_button.getAccessibleContext().setAccessibleName("Regresar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,11 +130,10 @@ public class Acercade extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aboutus_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutus_buttonMouseClicked
-       InterfazPrincipal interfazPrincipal = new InterfazPrincipal(); 
-       interfazPrincipal.setVisible(true);
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+        new MainInterface().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_aboutus_buttonMouseClicked
+    }//GEN-LAST:event_returnButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,29 +151,23 @@ public class Acercade extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Acercade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Acercade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Acercade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Acercade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AboutUs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Acercade().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AboutUs().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel aboutus_button;
     private javax.swing.JPanel aboutus_content;
-    private javax.swing.JLabel aboutus_title;
     private javax.swing.JLabel dev1_tittle;
     private javax.swing.JLabel dev2_title;
     private javax.swing.JLabel dev3_title;
@@ -198,5 +175,6 @@ public class Acercade extends javax.swing.JFrame {
     private javax.swing.JLabel dev5_title;
     private javax.swing.JLabel dev6_tittle;
     private javax.swing.JLabel devs_tittle;
+    private javax.swing.JButton returnButton;
     // End of variables declaration//GEN-END:variables
 }
