@@ -1,21 +1,142 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package interfaces;
 
-/**
- *
- * @author juanq
- */
+import Utils.CustomFont;
+import Utils.Hilo;
+import gamecomponents.GameSpace;
+import gamecomponents.KeyEvents;
+import Utils.LectorCSV;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
 public class ControlInterface extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuJuego
-     */
+    private final int ALTO = 600, ANCHO = 900;
+    private GameSpace espacioDeJuego;
+    private Hilo hilo;
+    private LectorCSV csv;
+    private boolean bPause;
+
     public ControlInterface() {
         initComponents();
+        this.setSize(ANCHO, ALTO);
+        this.setLocationRelativeTo(null);
+        bPause=false;
+        gameOver.setSize(ANCHO, ALTO);
+        gameOver.setLocationRelativeTo(null);
+        pause.setSize(ANCHO, ALTO);
+        this.setFocusable(true);
+        this.setResizable(false);
+        espacioDeJuego = new GameSpace(this);
+        espacioDeJuego.setBounds(0, 0, ANCHO - 200, ALTO);
+        this.add(espacioDeJuego);
+        addKeyListener(new KeyEvents(this));
+        hilo = new Hilo(espacioDeJuego);
+        hilo.start();
+        readScore();
+    }
+
+    public JFrame getGameOver() {
+        return gameOver;
+    }
+
+    public Hilo getHilo() {
+        return hilo;
+    }
+
+    public JLabel getBalls() {
+        return balls;
+    }
+
+    public JLabel getScore() {
+        return score;
+    }
+
+    public void setbPause(boolean bPause) {
+        this.bPause = bPause;
+    }
+    
+    public void writeScore(String username, String score) {
+        String sDir = "C:\\user";
+        File f = new File(sDir);
+        String fileName = "score.txt";
+        File file = new File(sDir, fileName);
+
+        if (!file.exists()) {
+            f.mkdir();
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(ControlInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        try (FileWriter fw = new FileWriter(file.getAbsoluteFile(), true)) {
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(username + "," + score);
+            bw.newLine();
+            bw.flush();
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ControlInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void readScore() {
+        String sDir = "C:\\user";
+        File f = new File(sDir);
+        String fileName = "score.txt";
+        File file = new File(sDir, fileName);
+
+        if (!file.exists()) {
+            f.mkdir();
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(ControlInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        csv = new LectorCSV(file.getAbsolutePath());
+        csv.organizar();
+        LectorCSV.ObjectCSV[] o = csv.getObjetos();
+
+        for (int i = 0; i < 6; i++) {
+            if (o.length > i) {
+                if (o[i] != null) {
+                    if (i != 0) {
+                        leaderBoard.setText(leaderBoard.getText() + "\n" + o[i].getUsernarme());
+                    } else {
+                        leaderBoard.setText(o[i].getUsernarme());
+                    }
+                }
+            }
+        }
+    }
+    
+    public void pause(){
+        if (!bPause) {
+            hilo.resume();
+            hilo.reanudar();
+            espacioDeJuego.setJuego(true);
+            bPause=true;
+            pause.setVisible(false);
+            espacioDeJuego.setFocusable(true);
+        } else {
+            hilo.suspend();
+            hilo.pause();
+            bPause=false;
+            pause.setVisible(true);
+            espacioDeJuego.setFocusable(true);
+        }
     }
 
     /**
@@ -27,143 +148,141 @@ public class ControlInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gameOver = new javax.swing.JFrame();
+        gameover = new javax.swing.JLabel();
+        reset = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        username = new javax.swing.JTextField();
+        pause = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        controls = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        menuJuego_content = new javax.swing.JPanel();
-        switch_BarVelocity_title = new javax.swing.JLabel();
-        switch_BallVelocity_title = new javax.swing.JLabel();
-        menu_title = new javax.swing.JPanel();
-        menu_tittle = new javax.swing.JLabel();
-        restart_button = new javax.swing.JPanel();
-        restart_tittle = new javax.swing.JLabel();
-        pause_button = new javax.swing.JPanel();
-        pause_tittle = new javax.swing.JLabel();
-        changeMap_button = new javax.swing.JPanel();
-        changeMap_title = new javax.swing.JLabel();
-        switch_ball_velocity = new javax.swing.JPanel();
-        plusbVel_button = new javax.swing.JLabel();
-        minusbVel_button = new javax.swing.JLabel();
-        switch_bar_velocity = new javax.swing.JPanel();
-        minusBVel_button = new javax.swing.JLabel();
-        plusBVel_button = new javax.swing.JLabel();
+        balls = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        leaderBoard = new javax.swing.JTextArea();
+        score = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
-        jLabel1.setText("jLabel1");
+        gameOver.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        gameOver.setFocusable(false);
+        gameOver.setUndecorated(true);
+        gameOver.setOpacity(0.5F);
+        gameOver.getContentPane().setLayout(null);
+
+        gameover.setFont(new CustomFont("pdark.ttf").font(1, 60f));
+        gameover.setText("Game Over");
+        gameOver.getContentPane().add(gameover);
+        gameover.setBounds(180, 10, 540, 230);
+
+        reset.setFont(new CustomFont("pdark.ttf").font(1, 15f));
+        reset.setText("VOLVER A JUGAR");
+        reset.setFocusable(false);
+        reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetActionPerformed(evt);
+            }
+        });
+        gameOver.getContentPane().add(reset);
+        reset.setBounds(190, 420, 230, 70);
+
+        jLabel4.setFont(new CustomFont("pdark.ttf").font(1, 30f));
+        jLabel4.setText("Username");
+        gameOver.getContentPane().add(jLabel4);
+        jLabel4.setBounds(40, 210, 270, 90);
+
+        username.setBackground(gameOver.getBackground());
+        username.setFont(new CustomFont("pdark.ttf").font(1,30f));
+        gameOver.getContentPane().add(username);
+        username.setBounds(320, 220, 510, 70);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        getContentPane().setLayout(null);
 
-        menuJuego_content.setBackground(new java.awt.Color(52, 52, 60));
+        pause.setAlignmentX(0.0F);
+        pause.setAlignmentY(0.0F);
+        pause.setFocusable(false);
+        pause.setOpaque(false);
+        pause.setLayout(null);
 
-        switch_BarVelocity_title.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        switch_BarVelocity_title.setForeground(new java.awt.Color(155, 155, 152));
-        switch_BarVelocity_title.setText("Velocidad barra");
+        jLabel8.setFont(new CustomFont("pdark.ttf").font(1,30f));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel8.setText("Pause");
+        pause.add(jLabel8);
+        jLabel8.setBounds(240, 170, 390, 280);
 
-        switch_BallVelocity_title.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        switch_BallVelocity_title.setForeground(new java.awt.Color(155, 155, 152));
-        switch_BallVelocity_title.setText("Velocidad bola");
+        getContentPane().add(pause);
+        pause.setBounds(0, 0, 900, 600);
 
-        menu_title.setBackground(new java.awt.Color(155, 155, 152));
+        controls.setBackground(new java.awt.Color(0, 0, 0));
+        controls.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+        controls.setLayout(null);
 
-        menu_tittle.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        menu_tittle.setText("Control");
-        menu_title.add(menu_tittle);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel2.setText("x");
+        controls.add(jLabel2);
+        jLabel2.setBounds(60, 160, 30, 30);
 
-        restart_button.setBackground(new java.awt.Color(155, 155, 152));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Circle.png"))); // NOI18N
+        controls.add(jLabel1);
+        jLabel1.setBounds(20, 150, 40, 40);
 
-        restart_tittle.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        restart_tittle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Icons/restart.png"))); // NOI18N
-        restart_tittle.setText("Restart");
-        restart_button.add(restart_tittle);
+        balls.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
+        balls.setForeground(new java.awt.Color(153, 153, 153));
+        controls.add(balls);
+        balls.setBounds(80, 150, 90, 50);
 
-        pause_button.setBackground(new java.awt.Color(155, 155, 152));
+        jLabel3.setFont(new CustomFont("ARCADE_I.TTF").font(1,13f));
+        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setText("LeaderBoard");
+        controls.add(jLabel3);
+        jLabel3.setBounds(20, 210, 180, 50);
 
-        pause_tittle.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        pause_tittle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Icons/pause.png"))); // NOI18N
-        pause_tittle.setText("Pause");
-        pause_button.add(pause_tittle);
+        leaderBoard.setBackground(new java.awt.Color(0, 0, 0));
+        leaderBoard.setColumns(20);
+        leaderBoard.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
+        leaderBoard.setForeground(new java.awt.Color(153, 153, 153));
+        leaderBoard.setRows(5);
+        leaderBoard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+        leaderBoard.setEnabled(false);
+        leaderBoard.setFocusable(false);
+        controls.add(leaderBoard);
+        leaderBoard.setBounds(20, 260, 164, 260);
 
-        changeMap_button.setBackground(new java.awt.Color(155, 155, 152));
+        score.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
+        score.setForeground(new java.awt.Color(153, 153, 153));
+        controls.add(score);
+        score.setBounds(10, 60, 120, 50);
 
-        changeMap_title.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        changeMap_title.setText("Cambiar mapa");
-        changeMap_button.add(changeMap_title);
+        jLabel5.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
+        jLabel5.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel5.setText("SCORE");
+        controls.add(jLabel5);
+        jLabel5.setBounds(10, 20, 160, 50);
 
-        switch_ball_velocity.setBackground(new java.awt.Color(155, 155, 152));
-
-        plusbVel_button.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        plusbVel_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Icons/minus.png"))); // NOI18N
-        switch_ball_velocity.add(plusbVel_button);
-
-        minusbVel_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Icons/plus.png"))); // NOI18N
-        switch_ball_velocity.add(minusbVel_button);
-
-        switch_bar_velocity.setBackground(new java.awt.Color(155, 155, 152));
-
-        minusBVel_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Icons/minus.png"))); // NOI18N
-        switch_bar_velocity.add(minusBVel_button);
-
-        plusBVel_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/java_videogame_80s/data/Icons/plus.png"))); // NOI18N
-        switch_bar_velocity.add(plusBVel_button);
-
-        javax.swing.GroupLayout menuJuego_contentLayout = new javax.swing.GroupLayout(menuJuego_content);
-        menuJuego_content.setLayout(menuJuego_contentLayout);
-        menuJuego_contentLayout.setHorizontalGroup(
-            menuJuego_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuJuego_contentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(changeMap_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
-            .addGroup(menuJuego_contentLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(menuJuego_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuJuego_contentLayout.createSequentialGroup()
-                        .addComponent(restart_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(pause_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuJuego_contentLayout.createSequentialGroup()
-                        .addGroup(menuJuego_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(switch_ball_velocity, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(switch_BallVelocity_title))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(menuJuego_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(switch_BarVelocity_title)
-                            .addComponent(switch_bar_velocity, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(28, 28, 28))
-        );
-        menuJuego_contentLayout.setVerticalGroup(
-            menuJuego_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuJuego_contentLayout.createSequentialGroup()
-                .addComponent(menu_title, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(menuJuego_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(switch_BallVelocity_title)
-                    .addComponent(switch_BarVelocity_title))
-                .addGap(18, 18, 18)
-                .addGroup(menuJuego_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(switch_ball_velocity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(switch_bar_velocity, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addGroup(menuJuego_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pause_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(restart_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(changeMap_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuJuego_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuJuego_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(controls);
+        controls.setBounds(700, 0, 200, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
+        if (!username.getText().equals("")) {
+            gameOver.setVisible(false);
+            this.remove(espacioDeJuego);
+            espacioDeJuego = new GameSpace(this);
+            espacioDeJuego.setBounds(0, 0, ANCHO - 200, ALTO);
+            this.add(espacioDeJuego);
+            hilo = new Hilo(espacioDeJuego);
+            hilo.start();
+            writeScore(username.getText(), score.getText());
+            readScore();
+        } else {
+            System.out.println("usuario invalido");
+        }
+    }//GEN-LAST:event_resetActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -204,23 +323,20 @@ public class ControlInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel changeMap_button;
-    private javax.swing.JLabel changeMap_title;
+    private javax.swing.JLabel balls;
+    private javax.swing.JPanel controls;
+    private javax.swing.JFrame gameOver;
+    private javax.swing.JLabel gameover;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel menuJuego_content;
-    private javax.swing.JPanel menu_title;
-    private javax.swing.JLabel menu_tittle;
-    private javax.swing.JLabel minusBVel_button;
-    private javax.swing.JLabel minusbVel_button;
-    private javax.swing.JPanel pause_button;
-    private javax.swing.JLabel pause_tittle;
-    private javax.swing.JLabel plusBVel_button;
-    private javax.swing.JLabel plusbVel_button;
-    private javax.swing.JPanel restart_button;
-    private javax.swing.JLabel restart_tittle;
-    private javax.swing.JLabel switch_BallVelocity_title;
-    private javax.swing.JLabel switch_BarVelocity_title;
-    private javax.swing.JPanel switch_ball_velocity;
-    private javax.swing.JPanel switch_bar_velocity;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextArea leaderBoard;
+    private javax.swing.JPanel pause;
+    private javax.swing.JButton reset;
+    private javax.swing.JLabel score;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

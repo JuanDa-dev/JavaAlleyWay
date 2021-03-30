@@ -127,7 +127,7 @@ public class MainInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        new GameSpace().setVisible(true);
+        new ControlInterface().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_startButtonActionPerformed
 
