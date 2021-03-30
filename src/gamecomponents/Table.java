@@ -4,7 +4,6 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 
-
 public class Table {
 
     private int x;
@@ -14,7 +13,7 @@ public class Table {
 
     public Table(int x, double y) {
         this.x = x;
-        this.y = (int)y;
+        this.y = (int) y;
         move = true;
     }
 
@@ -45,17 +44,17 @@ public class Table {
     public Rectangle2D getTabla() {
         return new Rectangle2D.Double(x, y, ANCHO, 1);
     }
-    
-    public Rectangle2D getLeft(){
-        return new Rectangle2D.Double(x,y,ANCHO/3,1);
+
+    public Rectangle2D getLeft() {
+        return new Rectangle2D.Double(x, y, ANCHO / 3, 1);
     }
-    
-    public Rectangle2D getCenter(){
-        return new Rectangle2D.Double(x+ANCHO/3,y,ANCHO/3,1);
+
+    public Rectangle2D getCenter() {
+        return new Rectangle2D.Double(x + ANCHO / 3, y, ANCHO / 3, 1);
     }
-    
-    public Rectangle2D getRiqht(){
-        return new Rectangle2D.Double(x+(2*(ANCHO/3)),y,ANCHO/3,1);
+
+    public Rectangle2D getRiqht() {
+        return new Rectangle2D.Double(x + (2 * (ANCHO / 3)), y, ANCHO / 3, 1);
     }
 
     public void mover(Rectangle limites) {
@@ -68,17 +67,18 @@ public class Table {
             }
         }
     }
+
     protected String choque(Ball bola) {
-        if (bola.getY() + bola.getALTO()== this.getY()) {//La bola se acerca por arriba
-            if (bola.getX() + bola.getALTO()>= this.getX() && bola.getX() <= this.getX() + this.getANCHO()) {//La bola golpea la tabla
+        if (bola.getY() + bola.getALTO() == this.getY()) {//La bola se acerca por arriba
+            if (bola.getX() + bola.getALTO() >= this.getX() && bola.getX() <= this.getX() + this.getANCHO()) {//La bola golpea la tabla
                 return "up";//Va hacia arriba
             }
         } else if (bola.getX() == this.getX() + this.getANCHO()) {//La bola se acerca por la derecha
-            if (bola.getY() + bola.getANCHO()>= this.getY() && bola.getY() <= this.getY() + this.getALTO()) {//La bola golpea la tabla
+            if (bola.getY() + bola.getANCHO() >= this.getY() && bola.getY() <= this.getY() + this.getALTO()) {//La bola golpea la tabla
                 return "right";//Va hacia la derecha
             }
-        } else if (bola.getX() + bola.getANCHO()== this.getX()) {//La bola se acerca por la izquierda
-            if (bola.getY() + bola.getANCHO()>= this.getY() && bola.getY() <= this.getY() + this.getALTO()) {//La bola golpea la tabla
+        } else if (bola.getX() + bola.getANCHO() == this.getX()) {//La bola se acerca por la izquierda
+            if (bola.getY() + bola.getANCHO() >= this.getY() && bola.getY() <= this.getY() + this.getALTO()) {//La bola golpea la tabla
                 return "left";//Va hacia la izquierda
             }
         }

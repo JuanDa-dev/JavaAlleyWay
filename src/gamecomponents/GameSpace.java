@@ -1,35 +1,31 @@
 package gamecomponents;
 
-
 import interfaces.ControlInterface;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Santiago Llerena
- */
 public class GameSpace extends JPanel {
 
-    private int balls,score;
-    private final Ball ball = new Ball(160, 480, this);
+    private int balls, score;
+    private Ball ball = new Ball(160, 480, this);
     private final Table table = new Table(110, 500);
-    private final LinkedList<Brick> bricks;
+    private LinkedList<Brick> bricks;
     private boolean juego;
-    private final ControlInterface ventana;
+    private ControlInterface ventana;
 
     public GameSpace(ControlInterface ventana) {
         this.setBackground(Color.darkGray);
         balls = 3;
-        score=0;
+        score = 0;
         bricks = new LinkedList<>();
         this.ventana = ventana;
-        this.setLadrillos(10, 50, ventana.getBounds());
+        createBricks(); 
         juego = false;
     }
 
@@ -66,13 +62,18 @@ public class GameSpace extends JPanel {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.white);
-        dibujar(g2);
+        paint(g2);
         this.actualizar();
     }
 
-    public void dibujar(Graphics2D g) {
+    public void paint(Graphics2D g) {
         g.fillOval(ball.getX(), ball.getY(), ball.getANCHO(), ball.getALTO());
         g.fillRect(table.getX(), table.getY(), table.getANCHO(), table.getALTO());
+          try {
+            showBricks(g);
+        } catch (ConcurrentModificationException e) {//Si se elimina un ladrillo, mientras estaba recorriendo los ladrillos
+            showBricks(g);//muestra de nuevo los ladrillos
+        }
         for (int i = 0; i < bricks.size(); i = i + 1) {
             if ((i % 2) == 1) {
                 g.setColor(Color.YELLOW);
@@ -85,36 +86,57 @@ public class GameSpace extends JPanel {
     }
 
     public void actualizar() {
-        ball.mover(juego, getBounds(), table, bricks);
+        ball.mover(juego, getBounds(), table, colision(table), bricks);
         table.mover(getBounds());
-        if(balls<=0){
+        if (balls <= 0) {
             gameOver();
         }
         hud();
     }
 
     private int colision(Table tabla) {
-        if(ball.getPelota().intersects(tabla.getCenter())){
+        if (ball.getPelota().intersects(tabla.getCenter())) {
             return 0;
-        }else if(ball.getPelota().intersects(tabla.getLeft())){
+        } else if (ball.getPelota().intersects(tabla.getLeft())) {
             return -1;
-        }else if(ball.getPelota().intersects(tabla.getRiqht())){
+        } else if (ball.getPelota().intersects(tabla.getRiqht())) {
             return 1;
         }
         return 2;
     }
 
-    private void setLadrillos(int x, int y, Rectangle limites) {
-        int dx = x, dy = y;
-        for (int i = 0; i < 30; i++) {
-
-            bricks.add(new Brick(dx, dy));
-            if (dx + bricks.get(i).getANCHO() < limites.width - 250) {
-                dx += bricks.get(i).getANCHO() + 3;
-            } else {
-                dx = x;
-                dy += bricks.get(i).getALTO() + 3;
+    private void createBricks() {
+        Color color = new Color(11, 48, 134);
+        int salto = 0;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 10; j++) {
+                switch (i) {//Depedendiendo de para hacer saltos y establecer el color al ladrillo
+                    case 2:
+                    case 3:
+                        color = new Color(133, 84, 12);
+                        salto = 25;
+                        break;
+                    case 4:
+                    case 5:
+                        color = new Color(57, 78, 87);
+                        salto = 50;
+                        break;
+                    case 6:
+                    case 7:
+                        color = new Color(79, 55, 89);
+                        salto = 75;
+                        break;
+                }
+                bricks.add(new Brick(7 + 60 * j, 50 + 30 * i + salto, 20, 50, color));
             }
+        }
+    }
+
+    //Muestro los ladrillos
+    private void showBricks(Graphics g) {
+        for (Brick ladrillo : bricks) {
+            g.setColor(ladrillo.getColor());//Color del ladrillo
+            g.fillRect(ladrillo.getX(), ladrillo.getY(), ladrillo.getANCHO(), ladrillo.getALTO());
         }
     }
 
@@ -123,9 +145,9 @@ public class GameSpace extends JPanel {
         ventana.getHilo().stop();
     }
 
-    private void hud(){
-        ventana.getBalls().setText(this.balls+"");
-        ventana.getScore().setText(this.score+"");
+    private void hud() {
+        ventana.getBalls().setText(this.balls + "");
+        ventana.getScore().setText(this.score + "");
     }
-    
+
 }

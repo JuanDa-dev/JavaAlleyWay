@@ -4,10 +4,6 @@ import interfaces.ControlInterface;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-/**
- *
- * @author Santiago Llerena
- */
 public class KeyEvents extends KeyAdapter {
 
     static boolean izq, der;

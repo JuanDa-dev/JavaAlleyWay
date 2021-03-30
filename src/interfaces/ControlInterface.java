@@ -53,11 +53,11 @@ public class ControlInterface extends javax.swing.JFrame {
     }
 
     public JLabel getBalls() {
-        return balls;
+        return numberOfBalls;
     }
 
     public JLabel getScore() {
-        return score;
+        return scoreViewr;
     }
 
     public void setbPause(boolean bPause) {
@@ -156,13 +156,13 @@ public class ControlInterface extends javax.swing.JFrame {
         pause = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         controls = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        balls = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        x = new javax.swing.JLabel();
+        ball = new javax.swing.JLabel();
+        numberOfBalls = new javax.swing.JLabel();
+        leaderBoardTitle = new javax.swing.JLabel();
         leaderBoard = new javax.swing.JTextArea();
-        score = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        scoreViewr = new javax.swing.JLabel();
+        scoreTitle = new javax.swing.JLabel();
 
         gameOver.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         gameOver.setFocusable(false);
@@ -218,26 +218,26 @@ public class ControlInterface extends javax.swing.JFrame {
         controls.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         controls.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel2.setText("x");
-        controls.add(jLabel2);
-        jLabel2.setBounds(60, 160, 30, 30);
+        x.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        x.setForeground(new java.awt.Color(153, 153, 153));
+        x.setText("x");
+        controls.add(x);
+        x.setBounds(60, 160, 30, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Circle.png"))); // NOI18N
-        controls.add(jLabel1);
-        jLabel1.setBounds(20, 150, 40, 40);
+        ball.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataImages/Circle.png"))); // NOI18N
+        controls.add(ball);
+        ball.setBounds(20, 150, 40, 40);
 
-        balls.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
-        balls.setForeground(new java.awt.Color(153, 153, 153));
-        controls.add(balls);
-        balls.setBounds(80, 150, 90, 50);
+        numberOfBalls.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
+        numberOfBalls.setForeground(new java.awt.Color(153, 153, 153));
+        controls.add(numberOfBalls);
+        numberOfBalls.setBounds(80, 150, 90, 50);
 
-        jLabel3.setFont(new CustomFont("ARCADE_I.TTF").font(1,13f));
-        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("LeaderBoard");
-        controls.add(jLabel3);
-        jLabel3.setBounds(20, 210, 180, 50);
+        leaderBoardTitle.setFont(new CustomFont("ARCADE_I.TTF").font(1,13f));
+        leaderBoardTitle.setForeground(new java.awt.Color(153, 153, 153));
+        leaderBoardTitle.setText("LeaderBoard");
+        controls.add(leaderBoardTitle);
+        leaderBoardTitle.setBounds(20, 210, 180, 50);
 
         leaderBoard.setBackground(new java.awt.Color(0, 0, 0));
         leaderBoard.setColumns(20);
@@ -250,16 +250,16 @@ public class ControlInterface extends javax.swing.JFrame {
         controls.add(leaderBoard);
         leaderBoard.setBounds(20, 260, 164, 260);
 
-        score.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
-        score.setForeground(new java.awt.Color(153, 153, 153));
-        controls.add(score);
-        score.setBounds(10, 60, 120, 50);
+        scoreViewr.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
+        scoreViewr.setForeground(new java.awt.Color(153, 153, 153));
+        controls.add(scoreViewr);
+        scoreViewr.setBounds(10, 60, 120, 50);
 
-        jLabel5.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
-        jLabel5.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel5.setText("SCORE");
-        controls.add(jLabel5);
-        jLabel5.setBounds(10, 20, 160, 50);
+        scoreTitle.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
+        scoreTitle.setForeground(new java.awt.Color(153, 153, 153));
+        scoreTitle.setText("SCORE");
+        controls.add(scoreTitle);
+        scoreTitle.setBounds(10, 20, 160, 50);
 
         getContentPane().add(controls);
         controls.setBounds(700, 0, 200, 600);
@@ -276,7 +276,7 @@ public class ControlInterface extends javax.swing.JFrame {
             this.add(espacioDeJuego);
             hilo = new Hilo(espacioDeJuego);
             hilo.start();
-            writeScore(username.getText(), score.getText());
+            writeScore(username.getText(), scoreViewr.getText());
             readScore();
         } else {
             System.out.println("usuario invalido");
@@ -323,20 +323,20 @@ public class ControlInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel balls;
+    private javax.swing.JLabel ball;
     private javax.swing.JPanel controls;
     private javax.swing.JFrame gameOver;
     private javax.swing.JLabel gameover;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextArea leaderBoard;
+    private javax.swing.JLabel leaderBoardTitle;
+    private javax.swing.JLabel numberOfBalls;
     private javax.swing.JPanel pause;
     private javax.swing.JButton reset;
-    private javax.swing.JLabel score;
+    private javax.swing.JLabel scoreTitle;
+    private javax.swing.JLabel scoreViewr;
     private javax.swing.JTextField username;
+    private javax.swing.JLabel x;
     // End of variables declaration//GEN-END:variables
 }
