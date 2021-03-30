@@ -42,23 +42,25 @@ public class Ball {
         if (mover) {
             x += cambioX;
             y += cambioY;
-            boolean b = false;
-            for (int i = 0; i < ladrillos.size(); i++) {
-                if (i == 0) {
-                    b = false;
-                }
-                if (colision(ladrillos.get(i))) {
-                    if (colisionLados(ladrillos.get(i))) {
-                        if (b == false) {
-                            cambioX = -cambioX;
-                            b = true;
-                        }
-                    } else {
-                        cambioY = -cambioY;
+            int indice = 0, eliminar = -1;
+            for (Brick ladrillo : ladrillos) {
+                if (!ladrillo.choque(this).equals("")) {
+                    if (ladrillo.choque(this).equals("right")) {
+                        cambioX = 1;
+                    } else if (ladrillo.choque(this).equals("left")) {
+                        cambioX = -1;
+                    } else if (ladrillo.choque(this).equals("up")) {
+                        cambioY = -1;
+                    } else if (ladrillo.choque(this).equals("down")) {
+                        cambioY = 1;
                     }
-                    ladrillos.remove(i);
+                    eliminar = indice;
                     panel.setScore(panel.getScore() + 50);
                 }
+                indice++;
+            }
+            if (eliminar != -1) {
+                ladrillos.remove(eliminar);
             }
             if (colision == -1 && KeyEvents.izq) {
                 cambioY = -cambioY;
@@ -84,7 +86,7 @@ public class Ball {
             if (y > 0) {
                 cambioY = -cambioY;
             }
-            if (y == limites.getMaxY() - 100) {
+            if (y == limites.getMaxY() - 40) {
                 panel.setBalls(panel.getBalls() - 1);
                 panel.setJuego(false);
                 panel.getScreen().setbPause(false);
@@ -94,19 +96,6 @@ public class Ball {
             x = tabla.getX() + 60;
             y = tabla.getY() - 20;
         }
-    }
-
-    private boolean colision(Brick l) {
-        return getPelota().intersects(l.getLadrillo());
-    }
-
-    private boolean colisionLados(Brick l) {
-        if (getPelota().intersects(l.getLado1())) {
-            return true;
-        } else if (getPelota().intersects(l.getLado2())) {
-            return true;
-        }
-        return false;
     }
 
 }
