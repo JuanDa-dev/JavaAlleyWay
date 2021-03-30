@@ -74,15 +74,6 @@ public class GameSpace extends JPanel {
         } catch (ConcurrentModificationException e) {//Si se elimina un ladrillo, mientras estaba recorriendo los ladrillos
             showBricks(g);//muestra de nuevo los ladrillos
         }
-        for (int i = 0; i < bricks.size(); i = i + 1) {
-            if ((i % 2) == 1) {
-                g.setColor(Color.YELLOW);
-                g.fill(bricks.get(i).getLadrillo());
-            } else if ((i % 2) == 0) {
-                g.setColor(Color.green);
-                g.fill(bricks.get(i).getLadrillo());
-            }
-        }
     }
 
     public void actualizar() {
@@ -106,34 +97,34 @@ public class GameSpace extends JPanel {
     }
 
     private void createBricks() {
-        Color color = new Color(11, 48, 134);
+        Color color = new Color(98, 187, 55);
         int salto = 0;
         for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < 11; j++) {
                 switch (i) {//Depedendiendo de para hacer saltos y establecer el color al ladrillo
                     case 2:
                     case 3:
-                        color = new Color(133, 84, 12);
-                        salto = 25;
+                        color = new Color(225, 220, 17);
+                        salto = 30;
                         break;
                     case 4:
                     case 5:
-                        color = new Color(57, 78, 87);
-                        salto = 50;
+                        color = new Color(20, 220, 217);
+                        salto = 60;
                         break;
                     case 6:
                     case 7:
-                        color = new Color(79, 55, 89);
-                        salto = 75;
+                        color = new Color(202, 40, 202);
+                        salto = 90;
                         break;
                 }
-                bricks.add(new Brick(7 + 60 * j, 50 + 30 * i + salto, 20, 50, color));
+                bricks.add(new Brick(10 + 62 * j, 50 + 32 * i + salto, 20, 50, color));
             }
         }
     }
 
     //Muestro los ladrillos
-    private void showBricks(Graphics g) {
+    private void showBricks(Graphics2D g) {
         for (Brick ladrillo : bricks) {
             g.setColor(ladrillo.getColor());//Color del ladrillo
             g.fillRect(ladrillo.getX(), ladrillo.getY(), ladrillo.getANCHO(), ladrillo.getALTO());

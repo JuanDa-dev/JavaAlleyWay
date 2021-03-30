@@ -5,18 +5,14 @@ import java.awt.geom.Rectangle2D;
 
 public class Brick {
 
-    private final int x, y, ANCHO = 60, ALTO = 30;
-    private Color color; 
+   private final int x, y, ANCHO = 60, ALTO = 30;
+   private Color color; 
   
-   
-
    public Brick(int x, int y, int alto, int ancho, Color color) {
         this.x = x;
         this.y = y;
         this.color = color;
     }
-
-    
 
     public int getX() {
         return x;
@@ -45,7 +41,8 @@ public class Brick {
     public Rectangle2D getLado2() {
         return new Rectangle2D.Double(x + ANCHO - 1, y + 1, 1, ALTO - 2);
     }
- public Color getColor() {
+    
+    public Color getColor() {
         return color;
     }
 
