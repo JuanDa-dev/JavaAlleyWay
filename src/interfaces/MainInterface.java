@@ -2,7 +2,6 @@ package interfaces;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import gamecomponents.GameSpace;
 
 public class MainInterface extends javax.swing.JFrame {
 

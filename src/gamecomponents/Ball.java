@@ -3,12 +3,13 @@ package gamecomponents;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.util.LinkedList;
+import java.applet.AudioClip;
 
 public class Ball {
 
     private int x, y;
     private int cambioX = 1, cambioY = -1;
-    private final int ANCHO = 20, ALTO = 20;
+    private final int ANCHO = 15, ALTO = 15;
     private GameSpace panel;
 
     public Ball(int x, int y, GameSpace panel) {
@@ -34,11 +35,10 @@ public class Ball {
     }
 
     public Ellipse2D getPelota() {
-
         return new Ellipse2D.Double(x, y, ANCHO, ALTO);
     }
 
-    public void mover(boolean mover, Rectangle limites, Table tabla, int colision, LinkedList<Brick> ladrillos) {
+    public void mover(boolean mover, Rectangle limites, Table tabla, LinkedList<Brick> ladrillos) {
         if (mover) {
             x += cambioX;
             y += cambioY;
@@ -62,17 +62,12 @@ public class Ball {
             if (eliminar != -1) {
                 ladrillos.remove(eliminar);
             }
-            if (colision == -1 && KeyEvents.izq) {
-                cambioY = -cambioY;
+            if (tabla.choque(this).equals("up")) {
+                cambioY = -1;
+            } else if (tabla.choque(this).equals("left")) {
                 cambioX = -1;
-                y = tabla.getY() - 20;
-            } else if (colision == 1 && KeyEvents.der) {
-                cambioY = -cambioY;
+            } else if (tabla.choque(this).equals("right")) {
                 cambioX = 1;
-                y = tabla.getY() - 20;
-            } else if (colision != 2) {
-                cambioY = -cambioY;
-                y = tabla.getY() - 20;
             }
             if (x > limites.getMaxX() - ANCHO) {
                 cambioX = -cambioX;
@@ -94,7 +89,7 @@ public class Ball {
 
         } else {
             x = tabla.getX() + 60;
-            y = tabla.getY() - 20;
+            y = tabla.getY() - 15;
         }
     }
 
