@@ -4,8 +4,6 @@ import interfaces.ControlInterface;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
 import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 import javax.swing.JPanel;
@@ -14,7 +12,7 @@ public class GameSpace extends JPanel {
 
     private int balls, score;
     private Ball ball = new Ball(160, 480, this);
-    private final Table table = new Table(110, 500);
+    private final Table table = new Table(110, 530);
     private LinkedList<Brick> bricks;
     private boolean juego;
     private ControlInterface ventana;
@@ -77,23 +75,12 @@ public class GameSpace extends JPanel {
     }
 
     public void actualizar() {
-        ball.mover(juego, getBounds(), table, colision(table), bricks);
+        ball.mover(juego, getBounds(), table, bricks);
         table.mover(getBounds());
-        if (balls <= 0) {
+        if (balls <= 0 || bricks.isEmpty()) {
             gameOver();
         }
         hud();
-    }
-
-    private int colision(Table tabla) {
-        if (ball.getPelota().intersects(tabla.getCenter())) {
-            return 0;
-        } else if (ball.getPelota().intersects(tabla.getLeft())) {
-            return -1;
-        } else if (ball.getPelota().intersects(tabla.getRiqht())) {
-            return 1;
-        }
-        return 2;
     }
 
     private void createBricks() {
@@ -105,20 +92,20 @@ public class GameSpace extends JPanel {
                     case 2:
                     case 3:
                         color = new Color(225, 220, 17);
-                        salto = 30;
+                        salto = 20;
                         break;
                     case 4:
                     case 5:
                         color = new Color(20, 220, 217);
-                        salto = 60;
+                        salto = 40;
                         break;
                     case 6:
                     case 7:
                         color = new Color(202, 40, 202);
-                        salto = 90;
+                        salto = 60;
                         break;
                 }
-                bricks.add(new Brick(10 + 62 * j, 50 + 32 * i + salto, 20, 50, color));
+                bricks.add(new Brick(10 + 62 * j, 20 + 17 * i + salto, color));
             }
         }
     }

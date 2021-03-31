@@ -5,10 +5,10 @@ import java.awt.geom.Rectangle2D;
 
 public class Brick {
 
-   private final int x, y, ANCHO = 60, ALTO = 30;
+   private final int x, y, ANCHO = 60, ALTO = 15;
    private Color color; 
   
-   public Brick(int x, int y, int alto, int ancho, Color color) {
+   public Brick(int x, int y, Color color) {
         this.x = x;
         this.y = y;
         this.color = color;

@@ -1,14 +1,13 @@
 package gamecomponents;
 
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 
 public class Table {
 
     private int x;
     private final int y;
-    private final int ANCHO = 100, ALTO = 15;
+    private final int ANCHO = 100, ALTO = 10;
     private boolean move;
 
     public Table(int x, double y) {
