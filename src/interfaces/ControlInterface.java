@@ -153,7 +153,7 @@ public class ControlInterface extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         pause = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        pauseTitle = new javax.swing.JLabel();
         controls = new javax.swing.JPanel();
         x = new javax.swing.JLabel();
         ball = new javax.swing.JLabel();
@@ -162,6 +162,7 @@ public class ControlInterface extends javax.swing.JFrame {
         leaderBoard = new javax.swing.JTextArea();
         scoreViewr = new javax.swing.JLabel();
         scoreTitle = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         gameOver.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         gameOver.setFocusable(false);
@@ -204,11 +205,11 @@ public class ControlInterface extends javax.swing.JFrame {
         pause.setOpaque(false);
         pause.setLayout(null);
 
-        jLabel8.setFont(new CustomFont("pdark.ttf").font(1,30f));
-        jLabel8.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel8.setText("Pause");
-        pause.add(jLabel8);
-        jLabel8.setBounds(240, 170, 390, 280);
+        pauseTitle.setFont(new CustomFont("pdark.ttf").font(1,30f));
+        pauseTitle.setForeground(new java.awt.Color(255, 255, 0));
+        pauseTitle.setText("Pause");
+        pause.add(pauseTitle);
+        pauseTitle.setBounds(240, 170, 80, 190);
 
         getContentPane().add(pause);
         pause.setBounds(0, 0, 900, 600);
@@ -259,6 +260,11 @@ public class ControlInterface extends javax.swing.JFrame {
         scoreTitle.setText("SCORE");
         controls.add(scoreTitle);
         scoreTitle.setBounds(10, 20, 160, 50);
+
+        jButton2.setBackground(new java.awt.Color(156, 155, 155));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataIcons/settings.png"))); // NOI18N
+        controls.add(jButton2);
+        jButton2.setBounds(140, 10, 50, 40);
 
         getContentPane().add(controls);
         controls.setBounds(700, 0, 200, 600);
@@ -326,12 +332,13 @@ public class ControlInterface extends javax.swing.JFrame {
     private javax.swing.JPanel controls;
     private javax.swing.JFrame gameOver;
     private javax.swing.JLabel gameover;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextArea leaderBoard;
     private javax.swing.JLabel leaderBoardTitle;
     private javax.swing.JLabel numberOfBalls;
     private javax.swing.JPanel pause;
+    private javax.swing.JLabel pauseTitle;
     private javax.swing.JButton reset;
     private javax.swing.JLabel scoreTitle;
     private javax.swing.JLabel scoreViewr;

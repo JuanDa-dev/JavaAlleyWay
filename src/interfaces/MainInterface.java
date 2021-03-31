@@ -2,14 +2,16 @@ package interfaces;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.applet.AudioClip;
 
 public class MainInterface extends javax.swing.JFrame {
 
-
     public MainInterface() {
         initComponents();
-        centreWindow(); 
+        centreWindow();
+
     }
+    AudioClip ButtonSound;
 
     private void centreWindow() {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -36,7 +38,6 @@ public class MainInterface extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(900, 550));
-        setPreferredSize(new java.awt.Dimension(900, 600));
         setResizable(false);
 
         cardContent.setBackground(new java.awt.Color(52, 52, 60));
@@ -55,7 +56,7 @@ public class MainInterface extends javax.swing.JFrame {
         startButton.setBackground(new java.awt.Color(155, 152, 152));
         startButton.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         startButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataIcons/play.png"))); // NOI18N
-        startButton.setText("EMPEZAR");
+        startButton.setText("PLAY");
         startButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,11 +129,16 @@ public class MainInterface extends javax.swing.JFrame {
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         new ControlInterface().setVisible(true);
         this.dispose();
+        ButtonSound = java.applet.Applet.newAudioClip(getClass().getResource("/dataSounds/ButtonSound.mp3"));
+        ButtonSound.play();
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void aboutUsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutUsButtonActionPerformed
+
         new AboutUs().setVisible(true);
         this.dispose();
+        ButtonSound = java.applet.Applet.newAudioClip(getClass().getResource("/dataSounds/ButtonSound.mp3"));
+        ButtonSound.play();
     }//GEN-LAST:event_aboutUsButtonActionPerformed
 
     /**
@@ -158,7 +164,7 @@ public class MainInterface extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
