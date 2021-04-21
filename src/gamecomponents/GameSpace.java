@@ -1,11 +1,13 @@
 package gamecomponents;
 
+import Utils.PlaySounds;
 import interfaces.ControlInterface;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
+import javax.sound.sampled.Clip;
 import javax.swing.JPanel;
 
 public class GameSpace extends JPanel {
@@ -16,8 +18,12 @@ public class GameSpace extends JPanel {
     private LinkedList<Brick> bricks;
     private boolean juego;
     private ControlInterface ventana;
+    private Clip BgMusic;
 
     public GameSpace(ControlInterface ventana) {
+        PlaySounds clip = new PlaySounds("src\\dataSounds\\BackgroundMusic.wav");
+        this.BgMusic=clip.getClip();
+        BgMusic.loop(-1);
         this.setBackground(Color.darkGray);
         balls = 3;
         score = 0;
@@ -25,6 +31,10 @@ public class GameSpace extends JPanel {
         this.ventana = ventana;
         createBricks(); 
         juego = false;
+    }
+
+    public Clip getBgMusic() {
+        return BgMusic;
     }
 
     public boolean isJuego() {
@@ -119,8 +129,12 @@ public class GameSpace extends JPanel {
     }
 
     private void gameOver() {
+        BgMusic.stop();
+        PlaySounds Gover = new PlaySounds("src\\dataSounds\\GameOverSound.wav");
+        Gover.getClip().start();
         ventana.getGameOver().setVisible(true);
         ventana.getHilo().stop();
+        
     }
 
     private void hud() {

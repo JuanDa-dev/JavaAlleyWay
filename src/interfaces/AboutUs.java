@@ -1,5 +1,6 @@
 package interfaces;
 
+import Utils.PlaySounds;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -68,6 +69,8 @@ public class AboutUs extends javax.swing.JFrame {
         returnButton.setBackground(new java.awt.Color(155, 152, 152));
         returnButton.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         returnButton.setText("Regresar");
+        returnButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        returnButton.setFocusable(false);
         returnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnButtonActionPerformed(evt);
@@ -131,6 +134,8 @@ public class AboutUs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+        PlaySounds btnSound = new PlaySounds("src\\dataSounds\\ButtonSound.wav");
+        btnSound.getClip().start();
         new MainInterface().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_returnButtonActionPerformed
