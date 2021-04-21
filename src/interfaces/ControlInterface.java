@@ -1,4 +1,3 @@
-
 package interfaces;
 
 import Utils.CustomFont;
@@ -6,6 +5,7 @@ import Utils.Hilo;
 import gamecomponents.GameSpace;
 import gamecomponents.KeyEvents;
 import Utils.LectorCSV;
+import Utils.PlaySounds;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 
 public class ControlInterface extends javax.swing.JFrame {
 
@@ -28,7 +27,7 @@ public class ControlInterface extends javax.swing.JFrame {
         initComponents();
         this.setSize(ANCHO, ALTO);
         this.setLocationRelativeTo(null);
-        bPause=false;
+        bPause = false;
         gameOver.setSize(ANCHO, ALTO);
         gameOver.setLocationRelativeTo(null);
         pause.setSize(ANCHO, ALTO);
@@ -62,7 +61,7 @@ public class ControlInterface extends javax.swing.JFrame {
     public void setbPause(boolean bPause) {
         this.bPause = bPause;
     }
-    
+
     public void writeScore(String username, String score) {
         String sDir = "C:\\user";
         File f = new File(sDir);
@@ -120,19 +119,21 @@ public class ControlInterface extends javax.swing.JFrame {
             }
         }
     }
-    
-    public void pause(){
+
+    public void pause() {
         if (!bPause) {
+            espacioDeJuego.getBgMusic().loop(-1);
             hilo.resume();
             hilo.reanudar();
             espacioDeJuego.setJuego(true);
-            bPause=true;
+            bPause = true;
             pause.setVisible(false);
             espacioDeJuego.setFocusable(true);
         } else {
+            espacioDeJuego.getBgMusic().stop();
             hilo.suspend();
             hilo.pause();
-            bPause=false;
+            bPause = false;
             pause.setVisible(true);
             espacioDeJuego.setFocusable(true);
         }
@@ -155,6 +156,7 @@ public class ControlInterface extends javax.swing.JFrame {
         pause = new javax.swing.JPanel();
         pauseTitle = new javax.swing.JLabel();
         controls = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         x = new javax.swing.JLabel();
         ball = new javax.swing.JLabel();
         numberOfBalls = new javax.swing.JLabel();
@@ -162,7 +164,6 @@ public class ControlInterface extends javax.swing.JFrame {
         leaderBoard = new javax.swing.JTextArea();
         scoreViewr = new javax.swing.JLabel();
         scoreTitle = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         gameOver.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         gameOver.setFocusable(false);
@@ -209,7 +210,7 @@ public class ControlInterface extends javax.swing.JFrame {
         pauseTitle.setForeground(new java.awt.Color(255, 255, 0));
         pauseTitle.setText("Pause");
         pause.add(pauseTitle);
-        pauseTitle.setBounds(240, 170, 80, 190);
+        pauseTitle.setBounds(240, 170, 260, 190);
 
         getContentPane().add(pause);
         pause.setBounds(0, 0, 900, 600);
@@ -217,6 +218,19 @@ public class ControlInterface extends javax.swing.JFrame {
         controls.setBackground(new java.awt.Color(0, 0, 0));
         controls.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         controls.setLayout(null);
+
+        jButton2.setBackground(new java.awt.Color(156, 155, 155));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataIcons/settings.png"))); // NOI18N
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setFocusPainted(false);
+        jButton2.setFocusable(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        controls.add(jButton2);
+        jButton2.setBounds(140, 10, 50, 40);
 
         x.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         x.setForeground(new java.awt.Color(153, 153, 153));
@@ -261,11 +275,6 @@ public class ControlInterface extends javax.swing.JFrame {
         controls.add(scoreTitle);
         scoreTitle.setBounds(10, 20, 160, 50);
 
-        jButton2.setBackground(new java.awt.Color(156, 155, 155));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataIcons/settings.png"))); // NOI18N
-        controls.add(jButton2);
-        jButton2.setBounds(140, 10, 50, 40);
-
         getContentPane().add(controls);
         controls.setBounds(700, 0, 200, 600);
 
@@ -288,6 +297,12 @@ public class ControlInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_resetActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        PlaySounds btnSound = new PlaySounds("src\\dataSounds\\ButtonSound.wav");
+        btnSound.getClip().start();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

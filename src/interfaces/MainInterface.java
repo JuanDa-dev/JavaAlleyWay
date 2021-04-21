@@ -1,17 +1,19 @@
 package interfaces;
 
+import Utils.PlaySounds;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.applet.AudioClip;
+
+
 
 public class MainInterface extends javax.swing.JFrame {
 
     public MainInterface() {
+
         initComponents();
         centreWindow();
 
     }
-    AudioClip ButtonSound;
 
     private void centreWindow() {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -47,6 +49,8 @@ public class MainInterface extends javax.swing.JFrame {
         aboutUsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataIcons/about us.png"))); // NOI18N
         aboutUsButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         aboutUsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        aboutUsButton.setFocusPainted(false);
+        aboutUsButton.setFocusable(false);
         aboutUsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aboutUsButtonActionPerformed(evt);
@@ -58,6 +62,9 @@ public class MainInterface extends javax.swing.JFrame {
         startButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataIcons/play.png"))); // NOI18N
         startButton.setText("PLAY");
         startButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        startButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        startButton.setFocusPainted(false);
+        startButton.setFocusable(false);
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
@@ -127,18 +134,17 @@ public class MainInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+        PlaySounds btnSound = new PlaySounds("src\\dataSounds\\ButtonSound.wav");
+        btnSound.getClip().start();
         new ControlInterface().setVisible(true);
         this.dispose();
-        ButtonSound = java.applet.Applet.newAudioClip(getClass().getResource("/dataSounds/ButtonSound.mp3"));
-        ButtonSound.play();
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void aboutUsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutUsButtonActionPerformed
-
+        PlaySounds btnSound = new PlaySounds("src\\dataSounds\\ButtonSound.wav");
+        btnSound.getClip().start();
         new AboutUs().setVisible(true);
         this.dispose();
-        ButtonSound = java.applet.Applet.newAudioClip(getClass().getResource("/dataSounds/ButtonSound.mp3"));
-        ButtonSound.play();
     }//GEN-LAST:event_aboutUsButtonActionPerformed
 
     /**
