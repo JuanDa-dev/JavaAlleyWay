@@ -3,7 +3,6 @@ package gamecomponents;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.util.LinkedList;
-import java.applet.AudioClip;
 
 public class Ball {
 
@@ -26,12 +25,32 @@ public class Ball {
         return y;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public int getANCHO() {
         return ANCHO;
     }
 
     public int getALTO() {
         return ALTO;
+    }
+
+    public void setCambioX(int cambioX) {
+        this.cambioX = cambioX;
+    }
+
+    public void setCambioY(int cambioY) {
+        this.cambioY = cambioY;
+    }
+
+    public GameSpace getPanel() {
+        return panel;
     }
 
     public Ellipse2D getPelota() {
