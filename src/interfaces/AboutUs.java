@@ -33,6 +33,7 @@ public class AboutUs extends javax.swing.JFrame {
         returnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Acerca de nosotros");
         setMinimumSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 

@@ -39,6 +39,7 @@ public class MainInterface extends javax.swing.JFrame {
         bar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("AlleyWay");
         setMinimumSize(new java.awt.Dimension(900, 550));
         setResizable(false);
 
