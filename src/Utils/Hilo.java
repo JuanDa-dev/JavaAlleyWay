@@ -13,30 +13,27 @@ import java.util.TimerTask;
 public class Hilo extends Thread {
 
     private GameSpace espacioDeJuego;
-    private Timer timer = new Timer();
-    private TimerTask score ;
+//    private Timer timer = new Timer();
+//    private TimerTask score ;
 
     public Hilo(GameSpace lamina) {
         this.espacioDeJuego = lamina;
     }
 
     public void pause() {
-        score.cancel();
-        timer.cancel();
+//        score.cancel();
+//        timer.cancel();
     }
 
     public void reanudar() {
-        timer = new Timer();
-        score = new TimerTask() {
-            @Override
-            public void run() {
-                espacioDeJuego.setScore(espacioDeJuego.getScore() + 3);
-            }
-        };
-        timer.schedule(score, 5000, 3000);
-    }
-
-    public Hilo() {
+//        timer = new Timer();
+//        score = new TimerTask() {
+//            @Override
+//            public void run() {
+//                espacioDeJuego.setScore(espacioDeJuego.getScore() + 3);
+//            }
+//        };
+//        timer.schedule(score, 5000, 3000);
     }
 
     @Override
