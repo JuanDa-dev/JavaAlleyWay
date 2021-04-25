@@ -8,7 +8,7 @@ public class AboutUs extends javax.swing.JFrame {
 
     public AboutUs() {
         initComponents();
-        centreWindow(); 
+        centreWindow();
     }
 
     private void centreWindow() {
@@ -162,7 +162,7 @@ public class AboutUs extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
         //</editor-fold>
 

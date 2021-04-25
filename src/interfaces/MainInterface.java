@@ -4,12 +4,9 @@ import Utils.PlaySounds;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-
-
 public class MainInterface extends javax.swing.JFrame {
 
     public MainInterface() {
-
         initComponents();
         centreWindow();
 

@@ -10,5 +10,5 @@ package gamecomponents;
  * @author Santiago Llerena
  */
 public enum Poder {
-    Life,Star;
+    Life, Star;
 }
