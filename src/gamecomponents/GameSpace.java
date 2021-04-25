@@ -116,16 +116,16 @@ public class GameSpace extends JPanel {
         
         if(App.poder!=null){
             Power poder=App.poder;
-            if (poder instanceof Life) {
+            if (poder.poder.equals(Poder.Life)) {
                 try {
                     BufferedImage bi = ImageIO.read(this.getClass().getResourceAsStream("../dataImages/life.png"));
-                    g.drawImage(bi, (int) (((Life) poder).x), (int) ((Life) poder).y, this);
+                    g.drawImage(bi, (int)poder.x, (int)poder.y, this);
                 } catch (IOException ex) {
                 }
-            } else if (poder instanceof Star) {
+            } else if (poder.poder.equals(Poder.Star)) {
                 try {
                     BufferedImage bi = ImageIO.read(this.getClass().getResourceAsStream("../dataImages/star.png"));
-                    g.drawImage(bi, (int) (((Star) poder).x), (int) ((Star) poder).y, this);
+                    g.drawImage(bi, (int)poder.x, (int)poder.y, this);
                 } catch (IOException ex) {
                 }
             }
@@ -146,9 +146,9 @@ public class GameSpace extends JPanel {
                 App.poder=null;
             }
             if (table.getTabla().intersects(new Rectangle2D.Double(poder.x, poder.y, poder.DIAMETRO, poder.DIAMETRO))) {
-                if(poder instanceof Life){
+                if(poder.poder.equals(Poder.Life)){
                     balls++;
-                }else if(poder instanceof Star){
+                }else if(poder.poder.equals(Poder.Star)){
                     score+=200;
                 }
                 App.poder=null;
