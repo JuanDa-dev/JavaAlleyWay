@@ -2,13 +2,14 @@ package gamecomponents;
 
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
+import main.App;
 
 public class Brick {
 
-   private final int x, y, ANCHO = 60, ALTO = 15;
-   private Color color; 
-  
-   public Brick(int x, int y, Color color) {
+    private final int x, y, ANCHO = 60, ALTO = 15;
+    private Color color;
+
+    public Brick(int x, int y, Color color) {
         this.x = x;
         this.y = y;
         this.color = color;
@@ -41,7 +42,7 @@ public class Brick {
     public Rectangle2D getLado2() {
         return new Rectangle2D.Double(x + ANCHO - 1, y + 1, 1, ALTO - 2);
     }
-    
+
     public Color getColor() {
         return color;
     }
@@ -49,6 +50,7 @@ public class Brick {
     public void setColor(Color color) {
         this.color = color;
     }
+
     protected String choque(Ball bola) {
         if (bola.getX() + bola.getANCHO() == this.getX()) {//Si la bola se acerca por la izquierda
             if (bola.getY() + bola.getANCHO() >= this.getY() && bola.getY() <= this.getY() + this.getALTO()) {//si la bola golpea por el lado izquierdo
@@ -68,5 +70,17 @@ public class Brick {
             }
         }
         return "";//No golpea la tabla
+    }
+
+    public Power generarPoder() {
+        int i = (int) (Math.random() * 10);
+        if (App.poder == null) {
+            if (i == 1) {
+                return new Life((float) (this.x), (float) (this.y));
+            } else if (i ==2) {
+                return new Star((float) (this.x), (float) (this.y));
+            }
+        }
+        return null;
     }
 }

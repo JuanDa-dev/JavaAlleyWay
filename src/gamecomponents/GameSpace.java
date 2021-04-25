@@ -5,10 +5,14 @@ import interfaces.ControlInterface;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ConcurrentModificationException;
-import java.util.LinkedList;
+import javax.imageio.ImageIO;
 import javax.sound.sampled.Clip;
 import javax.swing.JPanel;
+import main.App;
 import niveles.Nivel;
 import niveles.Nivel1;
 import niveles.Nivel2;
@@ -98,6 +102,7 @@ public class GameSpace extends JPanel {
         g2.setColor(Color.white);
         paint(g2);
         this.actualizar();
+
     }
 
     public void paint(Graphics2D g) {
@@ -108,6 +113,23 @@ public class GameSpace extends JPanel {
         } catch (ConcurrentModificationException e) {//Si se elimina un ladrillo, mientras estaba recorriendo los ladrillos
             nivel.showBricks(g);//muestra de nuevo los ladrillos
         }
+        
+        if(App.poder!=null){
+            Power poder=App.poder;
+            if (poder instanceof Life) {
+                try {
+                    BufferedImage bi = ImageIO.read(this.getClass().getResourceAsStream("../dataImages/life.png"));
+                    g.drawImage(bi, (int) (((Life) poder).x), (int) ((Life) poder).y, this);
+                } catch (IOException ex) {
+                }
+            } else if (poder instanceof Star) {
+                try {
+                    BufferedImage bi = ImageIO.read(this.getClass().getResourceAsStream("../dataImages/star.png"));
+                    g.drawImage(bi, (int) (((Star) poder).x), (int) ((Star) poder).y, this);
+                } catch (IOException ex) {
+                }
+            }
+        }
     }
 
     public void actualizar() {
@@ -115,6 +137,22 @@ public class GameSpace extends JPanel {
         table.mover(getBounds());
         if (balls <= 0 || nivel.getSiguiente() == null) {
             gameOver();
+        }
+
+        if (App.poder != null) {
+            Power poder=App.poder;
+            poder.y += poder.dy;
+            if (App.poder.y == getBounds().height) {
+                App.poder=null;
+            }
+            if (table.getTabla().intersects(new Rectangle2D.Double(poder.x, poder.y, poder.DIAMETRO, poder.DIAMETRO))) {
+                if(poder instanceof Life){
+                    balls++;
+                }else if(poder instanceof Star){
+                    score+=200;
+                }
+                App.poder=null;
+            }
         }
         pasoNivel();
         hud();

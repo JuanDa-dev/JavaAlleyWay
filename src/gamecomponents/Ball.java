@@ -3,6 +3,7 @@ package gamecomponents;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.util.LinkedList;
+import main.App;
 
 public class Ball {
 
@@ -10,11 +11,13 @@ public class Ball {
     private int cambioX = 1, cambioY = -1;
     private final int ANCHO = 15, ALTO = 15;
     private GameSpace panel;
+    private boolean generar;
 
     public Ball(int x, int y, GameSpace panel) {
         this.x = x;
         this.y = y;
         this.panel = panel;
+        generar = true;
     }
 
     public int getX() {
@@ -79,7 +82,16 @@ public class Ball {
                 indice++;
             }
             if (eliminar != -1) {
+                Power poder = ladrillos.get(eliminar).generarPoder();
                 ladrillos.remove(eliminar);
+                if (poder != null && generar) {
+                    App.poder=poder;
+                    generar = !generar;
+                }else{
+                    if(!generar){
+                        generar=!generar;
+                    }
+                }
             }
             if (tabla.choque(this).equals("up")) {
                 cambioY = -1;
