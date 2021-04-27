@@ -382,14 +382,18 @@ public class ControlInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.espacioDeJuego.setNivel(null);
+        this.espacioDeJuego.getNivel().setSiguiente(null);
+        this.espacioDeJuego.getNivel().getBricks().clear();
         this.espacioDeJuego.niveles();
         this.espacioDeJuego.getTable().setX(110);
         this.espacioDeJuego.getBall().setX(160);
         this.espacioDeJuego.getBall().setY(480);
         this.espacioDeJuego.getBall().setCambioX(1);
         this.espacioDeJuego.getBall().setCambioY(-1);
-        if(!bPause){
+        this.espacioDeJuego.setBalls(3);
+        this.espacioDeJuego.setScore(0);
+        this.espacioDeJuego.setMaxPoderes(5);
+        if (!bPause) {
             this.pause();
         }
         this.espacioDeJuego.setJuego(false);

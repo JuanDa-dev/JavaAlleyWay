@@ -85,11 +85,14 @@ public class Ball {
                 Power poder = ladrillos.get(eliminar).generarPoder();
                 ladrillos.remove(eliminar);
                 if (poder != null && generar) {
-                    App.poder=poder;
-                    generar = !generar;
-                }else{
-                    if(!generar){
-                        generar=!generar;
+                    if (panel.getMaxPoderes() > 0) {
+                        App.poder = poder;
+                        generar = !generar;
+                        panel.setMaxPoderes(panel.getMaxPoderes() - 1);
+                    }
+                } else {
+                    if (!generar) {
+                        generar = !generar;
                     }
                 }
             }

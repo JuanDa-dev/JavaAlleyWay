@@ -76,9 +76,9 @@ public class Brick {
         int i = (int) (Math.random() * 10);
         if (App.poder == null) {
             if (i == 1) {
-                return new Power((float) (this.x), (float) (this.y),Poder.Life);
-            } else if (i ==2) {
-                return new Power((float) (this.x), (float) (this.y),Poder.Star);
+                return new Power((float) (this.x), (float) (this.y), Poder.Life);
+            } else if (i == 2) {
+                return new Power((float) (this.x), (float) (this.y), Poder.Star);
             }
         }
         return null;

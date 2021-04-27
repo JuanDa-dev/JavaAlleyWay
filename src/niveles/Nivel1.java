@@ -45,17 +45,19 @@ public class Nivel1 extends Nivel {
 
     @Override
     public void cambioColores() {
-        int n = 22;
-        for (int i = 0; i < 4; i++) {
-            Random random = new Random();
-            int red = random.nextInt(256);
-            int green = random.nextInt(256);
-            int blue = random.nextInt(256);
-            Color color = new Color(red, green, blue);
-            for (int j = n - 22; j < n; j++) {
-                this.getBricks().get(j).setColor(color);
+        if (this.getBricks().size() == 88) {
+            int n = 22;
+            for (int i = 0; i < 4; i++) {
+                Random random = new Random();
+                int red = random.nextInt(256);
+                int green = random.nextInt(256);
+                int blue = random.nextInt(256);
+                Color color = new Color(red, green, blue);
+                for (int j = n - 22; j < n; j++) {
+                    this.getBricks().get(j).setColor(color);
+                }
+                n += 22;
             }
-            n += 22;
         }
     }
 

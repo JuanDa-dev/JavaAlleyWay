@@ -1,4 +1,4 @@
-      package Utils;
+package Utils;
 
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -23,8 +23,8 @@ public class CustomFont {
             font = new Font("Arial", Font.PLAIN, 14);
         }
     }
-    
-    public Font font(int estilo, float tamaño){
+
+    public Font font(int estilo, float tamaño) {
         Font tfont = font.deriveFont(estilo, tamaño);
         return tfont;
     }

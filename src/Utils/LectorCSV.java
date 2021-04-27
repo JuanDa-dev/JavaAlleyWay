@@ -48,8 +48,8 @@ public class LectorCSV {
         objetos = new ObjectCSV[lineas.size()];
         for (int i = 0; i < objetos.length; i++) {
             String[] e = StringUtil.splitCadena(lineas.get(i), ",");
-            if (e.length==2) {
-                objetos[i]=new ObjectCSV(e[0],Integer.parseInt(e[1]));
+            if (e.length == 2) {
+                objetos[i] = new ObjectCSV(e[0], Integer.parseInt(e[1]));
             }
         }
     }

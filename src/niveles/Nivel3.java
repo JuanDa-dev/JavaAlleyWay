@@ -171,20 +171,22 @@ public class Nivel3 extends Nivel {
 
     @Override
     public void cambioColores() {
-        Random random = new Random();
-        Color color = this.getBricks().get(0).getColor();
-        Color colorRandom = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-        Color color2 = this.getBricks().get(22).getColor();
-        Color colorRandom2 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-        Color color3 = this.getBricks().get(55).getColor();
-        Color colorRandom3 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-        for (Brick brick : this.getBricks()) {
-            if (brick.getColor().equals(color)) {
-                brick.setColor(colorRandom);
-            } else if (brick.getColor().equals(color2)) {
-                brick.setColor(colorRandom2);
-            } else if (brick.getColor().equals(color3)) {
-                brick.setColor(colorRandom3);
+        if (this.getBricks().size() == 170) {
+            Random random = new Random();
+            Color color = this.getBricks().get(0).getColor();
+            Color colorRandom = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+            Color color2 = this.getBricks().get(22).getColor();
+            Color colorRandom2 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+            Color color3 = this.getBricks().get(55).getColor();
+            Color colorRandom3 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+            for (Brick brick : this.getBricks()) {
+                if (brick.getColor().equals(color)) {
+                    brick.setColor(colorRandom);
+                } else if (brick.getColor().equals(color2)) {
+                    brick.setColor(colorRandom2);
+                } else if (brick.getColor().equals(color3)) {
+                    brick.setColor(colorRandom3);
+                }
             }
         }
     }

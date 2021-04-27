@@ -25,6 +25,7 @@ public class GameSpace extends JPanel {
     private final Table table = new Table(110, 530);
     private Nivel nivel;
     private boolean juego;
+    private int maxPoderes = 5;
     private ControlInterface ventana;
     private Clip BgMusic;
 
@@ -88,6 +89,14 @@ public class GameSpace extends JPanel {
         return this.ventana;
     }
 
+    public int getMaxPoderes() {
+        return maxPoderes;
+    }
+
+    public void setMaxPoderes(int maxPoderes) {
+        this.maxPoderes = maxPoderes;
+    }
+
     public void niveles() {
         nivel = new Nivel1();
         nivel.createBricks();
@@ -113,19 +122,19 @@ public class GameSpace extends JPanel {
         } catch (ConcurrentModificationException e) {//Si se elimina un ladrillo, mientras estaba recorriendo los ladrillos
             nivel.showBricks(g);//muestra de nuevo los ladrillos
         }
-        
-        if(App.poder!=null){
-            Power poder=App.poder;
+
+        if (App.poder != null) {
+            Power poder = App.poder;
             if (poder.poder.equals(Poder.Life)) {
                 try {
                     BufferedImage bi = ImageIO.read(this.getClass().getResourceAsStream("../dataImages/life.png"));
-                    g.drawImage(bi, (int)poder.x, (int)poder.y, this);
+                    g.drawImage(bi, (int) poder.x, (int) poder.y, this);
                 } catch (IOException ex) {
                 }
             } else if (poder.poder.equals(Poder.Star)) {
                 try {
                     BufferedImage bi = ImageIO.read(this.getClass().getResourceAsStream("../dataImages/star.png"));
-                    g.drawImage(bi, (int)poder.x, (int)poder.y, this);
+                    g.drawImage(bi, (int) poder.x, (int) poder.y, this);
                 } catch (IOException ex) {
                 }
             }
@@ -140,18 +149,18 @@ public class GameSpace extends JPanel {
         }
 
         if (App.poder != null) {
-            Power poder=App.poder;
+            Power poder = App.poder;
             poder.y += poder.dy;
             if (App.poder.y == getBounds().height) {
-                App.poder=null;
+                App.poder = null;
             }
             if (table.getTabla().intersects(new Rectangle2D.Double(poder.x, poder.y, poder.DIAMETRO, poder.DIAMETRO))) {
-                if(poder.poder.equals(Poder.Life)){
+                if (poder.poder.equals(Poder.Life)) {
                     balls++;
-                }else if(poder.poder.equals(Poder.Star)){
-                    score+=200;
+                } else if (poder.poder.equals(Poder.Star)) {
+                    score += 200;
                 }
-                App.poder=null;
+                App.poder = null;
             }
         }
         pasoNivel();
@@ -171,6 +180,7 @@ public class GameSpace extends JPanel {
             this.setJuego(false);
             ventana.getHilo().pause();
             ventana.setbPause(false);
+            this.setMaxPoderes(5);
         }
     }
 
@@ -180,7 +190,6 @@ public class GameSpace extends JPanel {
         Gover.getClip().start();
         ventana.getGameOver().setVisible(true);
         ventana.getHilo().stop();
-
     }
 
     private void hud() {
