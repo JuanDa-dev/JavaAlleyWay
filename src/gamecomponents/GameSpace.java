@@ -20,12 +20,12 @@ import niveles.Nivel3;
 
 public class GameSpace extends JPanel {
 
-    private int balls, score;
-    private Ball ball = new Ball(160, 480, this);
-    private final Table table = new Table(110, 530);
     private Nivel nivel;
     private boolean juego;
     private int maxPoderes = 5;
+    private int balls, score;
+    private Ball ball;
+    private final Table table;
     private ControlInterface ventana;
     private Clip BgMusic;
 
@@ -34,15 +34,13 @@ public class GameSpace extends JPanel {
         this.BgMusic = clip.getClip();
         BgMusic.loop(-1);
         this.setBackground(Color.darkGray);
+        this.ventana = ventana;
+        ball = new Ball(160, 480, this);
+        table = new Table(110, 530);
         balls = 3;
         score = 0;
-        this.ventana = ventana;
         juego = false;
         niveles();
-    }
-
-    public Clip getBgMusic() {
-        return BgMusic;
     }
 
     public Table getTable() {
@@ -51,22 +49,6 @@ public class GameSpace extends JPanel {
 
     public Ball getBall() {
         return ball;
-    }
-
-    public Nivel getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(Nivel nivel) {
-        this.nivel = nivel;
-    }
-
-    public boolean isJuego() {
-        return juego;
-    }
-
-    public void setJuego(boolean juego) {
-        this.juego = juego;
     }
 
     public int getBalls() {
@@ -85,6 +67,26 @@ public class GameSpace extends JPanel {
         this.score = score;
     }
 
+    public Clip getBgMusic() {
+        return BgMusic;
+    }
+
+    public Nivel getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Nivel nivel) {
+        this.nivel = nivel;
+    }
+
+    public boolean isJuego() {
+        return juego;
+    }
+
+    public void setJuego(boolean juego) {
+        this.juego = juego;
+    }
+
     public ControlInterface getScreen() {
         return this.ventana;
     }
@@ -98,10 +100,10 @@ public class GameSpace extends JPanel {
     }
 
     public void niveles() {
-        nivel = new Nivel1();
+        nivel = new Nivel1(this);
         nivel.createBricks();
-        nivel.setSiguiente(new Nivel2());
-        nivel.getSiguiente().setSiguiente(new Nivel3());
+        nivel.setSiguiente(new Nivel2(this));
+        nivel.getSiguiente().setSiguiente(new Nivel3(this));
     }
 
     @Override
@@ -142,8 +144,7 @@ public class GameSpace extends JPanel {
     }
 
     public void actualizar() {
-        ball.mover(juego, getBounds(), table, nivel.getBricks());
-        table.mover(getBounds());
+        nivel.actualizar(ball, juego, getBounds(), table);
         if (balls <= 0 || nivel.getSiguiente() == null) {
             gameOver();
         }
@@ -169,7 +170,7 @@ public class GameSpace extends JPanel {
 
     //Cuando se pasa un nivel del juego
     private void pasoNivel() {
-        if (nivel.getBricks().isEmpty()) {//Si no quedan ladrillos, pasa al siguiente nivel
+        if (nivel.longitudArrayLadrillos() == 0) {//Si no quedan ladrillos, pasa al siguiente nivel
             nivel = nivel.getSiguiente();
             nivel.createBricks();
             table.setX(110);

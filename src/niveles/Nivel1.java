@@ -6,6 +6,7 @@
 package niveles;
 
 import gamecomponents.Brick;
+import gamecomponents.GameSpace;
 import java.awt.Color;
 import java.util.Random;
 
@@ -14,6 +15,10 @@ import java.util.Random;
  * @author Edilberto
  */
 public class Nivel1 extends Nivel {
+
+    public Nivel1(GameSpace ventana) {
+        super(ventana);
+    }
 
     @Override
     public void createBricks() {
@@ -38,14 +43,14 @@ public class Nivel1 extends Nivel {
                         salto = 60;
                         break;
                 }
-                this.getBricks().add(new Brick(10 + 62 * j, 20 + 17 * i + salto, color));
+                this.añadirLadrillo(new Brick(10 + 62 * j, 20 + 17 * i + salto, color));
             }
         }
     }
 
     @Override
     public void cambioColores() {
-        if (this.getBricks().size() == 88) {
+        if (this.longitudArrayLadrillos() == 88) {
             int n = 22;
             for (int i = 0; i < 4; i++) {
                 Random random = new Random();
@@ -54,7 +59,7 @@ public class Nivel1 extends Nivel {
                 int blue = random.nextInt(256);
                 Color color = new Color(red, green, blue);
                 for (int j = n - 22; j < n; j++) {
-                    this.getBricks().get(j).setColor(color);
+                    this.getBrick(j).setColor(color);
                 }
                 n += 22;
             }
