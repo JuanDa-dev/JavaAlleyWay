@@ -160,9 +160,10 @@ public class ControlInterface extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         Settings = new javax.swing.JDialog(this, true);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         changeColorbtn = new javax.swing.JButton();
         restartbtn = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         pause = new javax.swing.JPanel();
         pauseTitle = new javax.swing.JLabel();
         controls = new javax.swing.JPanel();
@@ -214,13 +215,23 @@ public class ControlInterface extends javax.swing.JFrame {
         Settings.setResizable(false);
         Settings.getContentPane().setLayout(null);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Configuración");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(120, 20, 160, 50);
+
         changeColorbtn.setText("Cambiar Colores de Ladrillos");
         changeColorbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changeColorbtnActionPerformed(evt);
             }
         });
-        Settings.getContentPane().add(changeColorbtn);
+        jPanel1.add(changeColorbtn);
         changeColorbtn.setBounds(10, 110, 180, 50);
 
         restartbtn.setText("Reiniciar Juego");
@@ -229,13 +240,11 @@ public class ControlInterface extends javax.swing.JFrame {
                 restartbtnActionPerformed(evt);
             }
         });
-        Settings.getContentPane().add(restartbtn);
+        jPanel1.add(restartbtn);
         restartbtn.setBounds(220, 110, 140, 50);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel3.setText("Configuracion");
-        Settings.getContentPane().add(jLabel3);
-        jLabel3.setBounds(110, 40, 141, 25);
+        Settings.getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 400, 300);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AlleyWay");
@@ -465,6 +474,7 @@ public class ControlInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextArea leaderBoard;
     private javax.swing.JLabel leaderBoardTitle;
     private javax.swing.JButton musicbtn;

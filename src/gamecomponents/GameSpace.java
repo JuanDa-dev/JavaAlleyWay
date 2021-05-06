@@ -96,7 +96,7 @@ public class GameSpace extends JPanel {
 
     public void niveles() {
         PlaySounds clipL1 = new PlaySounds("src\\dataSounds\\BackgroundMusicL1.wav");
-        PlaySounds clipL2 = new PlaySounds("src\\dataSounds\\BackgroundMusicL3.wav");
+        PlaySounds clipL2 = new PlaySounds("src\\dataSounds\\BackgroundMusicL2.wav");
         PlaySounds clipL3 = new PlaySounds("src\\dataSounds\\BackgroundMusicL3.wav");
         nivel = new Nivel1();
         nivel.setBgMusic(clipL1.getClip());
