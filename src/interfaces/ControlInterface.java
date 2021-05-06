@@ -383,7 +383,7 @@ public class ControlInterface extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.espacioDeJuego.getNivel().setSiguiente(null);
-        this.espacioDeJuego.getNivel().getBricks().clear();
+        this.espacioDeJuego.getNivel().vaciarLadrillos();
         this.espacioDeJuego.niveles();
         this.espacioDeJuego.getTable().setX(110);
         this.espacioDeJuego.getBall().setX(160);
