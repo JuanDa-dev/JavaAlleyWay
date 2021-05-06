@@ -22,17 +22,14 @@ public class GameSpace extends JPanel {
 
     private int balls, score;
     private Ball ball = new Ball(160, 480, this);
-    private final Table table = new Table(110, 530);
-    private Nivel nivel;
+    private final Table table = new Table(110, 530);    
+    public Nivel nivel;    
     private boolean juego;
     private int maxPoderes = 5;
     private ControlInterface ventana;
-    private Clip BgMusic;
+    private Clip BgMusic;   
 
     public GameSpace(ControlInterface ventana) {
-        PlaySounds clip = new PlaySounds("src\\dataSounds\\BackgroundMusic.wav");
-        this.BgMusic = clip.getClip();
-        BgMusic.loop(-1);
         this.setBackground(Color.darkGray);
         balls = 3;
         score = 0;
@@ -42,7 +39,7 @@ public class GameSpace extends JPanel {
     }
 
     public Clip getBgMusic() {
-        return BgMusic;
+        return nivel.getBgMusic();
     }
 
     public Table getTable() {
@@ -98,10 +95,17 @@ public class GameSpace extends JPanel {
     }
 
     public void niveles() {
+        PlaySounds clipL1 = new PlaySounds("src\\dataSounds\\BackgroundMusicL1.wav");
+        PlaySounds clipL2 = new PlaySounds("src\\dataSounds\\BackgroundMusicL3.wav");
+        PlaySounds clipL3 = new PlaySounds("src\\dataSounds\\BackgroundMusicL3.wav");
         nivel = new Nivel1();
+        nivel.setBgMusic(clipL1.getClip());
         nivel.createBricks();
         nivel.setSiguiente(new Nivel2());
+        nivel.getSiguiente().setBgMusic(clipL2.getClip());
         nivel.getSiguiente().setSiguiente(new Nivel3());
+        nivel.getSiguiente().getSiguiente().setBgMusic(clipL3.getClip());
+        nivel.getBgMusic().loop(-1);
     }
 
     @Override
@@ -144,7 +148,7 @@ public class GameSpace extends JPanel {
     public void actualizar() {
         ball.mover(juego, getBounds(), table, nivel.getBricks());
         table.mover(getBounds());
-        if (balls <= 0 || nivel.getSiguiente() == null) {
+        if (balls <= 0 || nivel == null) {
             gameOver();
         }
 
@@ -170,7 +174,9 @@ public class GameSpace extends JPanel {
     //Cuando se pasa un nivel del juego
     private void pasoNivel() {
         if (nivel.getBricks().isEmpty()) {//Si no quedan ladrillos, pasa al siguiente nivel
+            nivel.getBgMusic().close();
             nivel = nivel.getSiguiente();
+            nivel.getBgMusic().loop(-1);
             nivel.createBricks();
             table.setX(110);
             ball.setX(160);
@@ -181,11 +187,12 @@ public class GameSpace extends JPanel {
             ventana.getHilo().pause();
             ventana.setbPause(false);
             this.setMaxPoderes(5);
+
         }
     }
 
     private void gameOver() {
-        BgMusic.stop();
+        nivel.getBgMusic().stop();
         PlaySounds Gover = new PlaySounds("src\\dataSounds\\GameOverSound.wav");
         Gover.getClip().start();
         ventana.getGameOver().setVisible(true);

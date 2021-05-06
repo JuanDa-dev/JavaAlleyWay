@@ -8,6 +8,7 @@ package niveles;
 import gamecomponents.Brick;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
+import javax.sound.sampled.Clip;
 
 /**
  *
@@ -17,10 +18,12 @@ public abstract class Nivel {
 
     private Nivel siguiente;
     private LinkedList<Brick> bricks;
+    private Clip BgMusic;
 
     public Nivel() {
         bricks = new LinkedList<>();
         siguiente = null;
+        BgMusic = null;
     }
 
     public Nivel getSiguiente() {
@@ -29,6 +32,14 @@ public abstract class Nivel {
 
     public void setSiguiente(Nivel siguiente) {
         this.siguiente = siguiente;
+    }
+
+    public Clip getBgMusic() {
+        return BgMusic;
+    }
+
+    public void setBgMusic(Clip BgMusic) {
+        this.BgMusic = BgMusic;
     }
 
     public LinkedList<Brick> getBricks() {

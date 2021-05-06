@@ -22,12 +22,14 @@ public class ControlInterface extends javax.swing.JFrame {
     private Hilo hilo;
     private LectorCSV csv;
     private boolean bPause;
+    private boolean music;
 
     public ControlInterface() {
         initComponents();
         this.setSize(ANCHO, ALTO);
         this.setLocationRelativeTo(null);
         bPause = false;
+        music = true;
         gameOver.setSize(ANCHO, ALTO);
         gameOver.setLocationRelativeTo(null);
         pause.setSize(ANCHO, ALTO);
@@ -122,7 +124,9 @@ public class ControlInterface extends javax.swing.JFrame {
 
     public void pause() {
         if (!bPause) {
-            espacioDeJuego.getBgMusic().loop(-1);
+            if (music) {
+                espacioDeJuego.getBgMusic().loop(-1);
+            }
             hilo.resume();
             hilo.reanudar();
             espacioDeJuego.setJuego(true);
@@ -130,7 +134,9 @@ public class ControlInterface extends javax.swing.JFrame {
             pause.setVisible(false);
             espacioDeJuego.setFocusable(true);
         } else {
-            espacioDeJuego.getBgMusic().stop();
+            if (music) {
+                espacioDeJuego.getBgMusic().stop();
+            }
             hilo.suspend();
             hilo.pause();
             bPause = false;
@@ -153,16 +159,14 @@ public class ControlInterface extends javax.swing.JFrame {
         reset = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
-        Config = new javax.swing.JFrame();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        Settings = new javax.swing.JDialog(this, true);
+        changeColorbtn = new javax.swing.JButton();
+        restartbtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         pause = new javax.swing.JPanel();
         pauseTitle = new javax.swing.JLabel();
         controls = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        settingbtn = new javax.swing.JButton();
         x = new javax.swing.JLabel();
         ball = new javax.swing.JLabel();
         numberOfBalls = new javax.swing.JLabel();
@@ -170,6 +174,8 @@ public class ControlInterface extends javax.swing.JFrame {
         leaderBoard = new javax.swing.JTextArea();
         scoreViewr = new javax.swing.JLabel();
         scoreTitle = new javax.swing.JLabel();
+        musicbtn = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         gameOver.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         gameOver.setFocusable(false);
@@ -203,69 +209,33 @@ public class ControlInterface extends javax.swing.JFrame {
         gameOver.getContentPane().add(username);
         username.setBounds(320, 220, 510, 70);
 
-        Config.setTitle("Configuracion");
-        Config.setResizable(false);
-        Config.setSize(new java.awt.Dimension(400, 200));
+        Settings.setBounds(new java.awt.Rectangle(0, 0, 400, 200));
+        Settings.setPreferredSize(new java.awt.Dimension(400, 200));
+        Settings.setResizable(false);
+        Settings.getContentPane().setLayout(null);
 
-        jButton1.setText("Cambiar Colores de Ladrillos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        changeColorbtn.setText("Cambiar Colores de Ladrillos");
+        changeColorbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                changeColorbtnActionPerformed(evt);
             }
         });
+        Settings.getContentPane().add(changeColorbtn);
+        changeColorbtn.setBounds(10, 110, 180, 50);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Canciones:");
-
-        jButton3.setText("Reiniciar Juego");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        restartbtn.setText("Reiniciar Juego");
+        restartbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                restartbtnActionPerformed(evt);
             }
         });
+        Settings.getContentPane().add(restartbtn);
+        restartbtn.setBounds(220, 110, 140, 50);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel2.setText("Configuracion");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout ConfigLayout = new javax.swing.GroupLayout(Config.getContentPane());
-        Config.getContentPane().setLayout(ConfigLayout);
-        ConfigLayout.setHorizontalGroup(
-            ConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ConfigLayout.createSequentialGroup()
-                .addGroup(ConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ConfigLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(ConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ConfigLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(ConfigLayout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(33, 33, 33)
-                                .addComponent(jButton3))))
-                    .addGroup(ConfigLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel2)))
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
-        ConfigLayout.setVerticalGroup(
-            ConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConfigLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(ConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(ConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
-                .addGap(33, 33, 33))
-        );
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel3.setText("Configuracion");
+        Settings.getContentPane().add(jLabel3);
+        jLabel3.setBounds(110, 40, 141, 25);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AlleyWay");
@@ -290,18 +260,18 @@ public class ControlInterface extends javax.swing.JFrame {
         controls.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         controls.setLayout(null);
 
-        jButton2.setBackground(new java.awt.Color(156, 155, 155));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataIcons/settings.png"))); // NOI18N
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        settingbtn.setBackground(new java.awt.Color(156, 155, 155));
+        settingbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataIcons/settings.png"))); // NOI18N
+        settingbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        settingbtn.setFocusPainted(false);
+        settingbtn.setFocusable(false);
+        settingbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                settingbtnActionPerformed(evt);
             }
         });
-        controls.add(jButton2);
-        jButton2.setBounds(140, 10, 50, 40);
+        controls.add(settingbtn);
+        settingbtn.setBounds(140, 10, 50, 40);
 
         x.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         x.setForeground(new java.awt.Color(153, 153, 153));
@@ -346,6 +316,28 @@ public class ControlInterface extends javax.swing.JFrame {
         controls.add(scoreTitle);
         scoreTitle.setBounds(10, 20, 160, 50);
 
+        musicbtn.setBackground(new java.awt.Color(156, 155, 155));
+        musicbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dataIcons/music.png"))); // NOI18N
+        musicbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        musicbtn.setFocusPainted(false);
+        musicbtn.setFocusable(false);
+        musicbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                musicbtnActionPerformed(evt);
+            }
+        });
+        controls.add(musicbtn);
+        musicbtn.setBounds(140, 60, 50, 40);
+
+        jButton6.setText("jButton6");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        controls.add(jButton6);
+        jButton6.setBounds(140, 120, 50, 23);
+
         getContentPane().add(controls);
         controls.setBounds(700, 0, 200, 600);
 
@@ -368,20 +360,43 @@ public class ControlInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_resetActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void settingbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingbtnActionPerformed
         // TODO add your handling code here:
         PlaySounds btnSound = new PlaySounds("src\\dataSounds\\ButtonSound.wav");
         btnSound.getClip().start();
-        Config.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        if (bPause) {
+            pause();
+        }
+        Settings.setBounds(this.getX()+200, this.getY()+200, 400, 200);
+        Settings.setVisible(true);
+    }//GEN-LAST:event_settingbtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void musicbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicbtnActionPerformed
+
+        if (music) {
+            espacioDeJuego.getBgMusic().stop();
+            music = false;
+        } else {
+            espacioDeJuego.getBgMusic().loop(-1);
+            music = true;
+        }
+    }//GEN-LAST:event_musicbtnActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        espacioDeJuego.nivel.getBricks().clear();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void changeColorbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeColorbtnActionPerformed
+        // TODO add your handling code here:
         if (!espacioDeJuego.isJuego()) {
             espacioDeJuego.getNivel().cambioColores();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_changeColorbtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void restartbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartbtnActionPerformed
+        // TODO add your handling code here:
+        espacioDeJuego.getBgMusic().close();
         this.espacioDeJuego.getNivel().setSiguiente(null);
         this.espacioDeJuego.getNivel().getBricks().clear();
         this.espacioDeJuego.niveles();
@@ -399,7 +414,8 @@ public class ControlInterface extends javax.swing.JFrame {
         this.espacioDeJuego.setJuego(false);
         this.getHilo().pause();
         this.setbPause(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        Settings.dispose();
+    }//GEN-LAST:event_restartbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,26 +456,26 @@ public class ControlInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFrame Config;
+    private javax.swing.JDialog Settings;
     private javax.swing.JLabel ball;
+    private javax.swing.JButton changeColorbtn;
     private javax.swing.JPanel controls;
     private javax.swing.JFrame gameOver;
     private javax.swing.JLabel gameover;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextArea leaderBoard;
     private javax.swing.JLabel leaderBoardTitle;
+    private javax.swing.JButton musicbtn;
     private javax.swing.JLabel numberOfBalls;
     private javax.swing.JPanel pause;
     private javax.swing.JLabel pauseTitle;
     private javax.swing.JButton reset;
+    private javax.swing.JButton restartbtn;
     private javax.swing.JLabel scoreTitle;
     private javax.swing.JLabel scoreViewr;
+    private javax.swing.JButton settingbtn;
     private javax.swing.JTextField username;
     private javax.swing.JLabel x;
     // End of variables declaration//GEN-END:variables

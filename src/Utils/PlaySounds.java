@@ -28,7 +28,7 @@ public class PlaySounds {
             clip.open(ms);
 
         } catch (Exception e) {
-            System.out.println("Error al reproducir");
+            System.out.println("Error al encontrar el archivo");
         }
     }
 
