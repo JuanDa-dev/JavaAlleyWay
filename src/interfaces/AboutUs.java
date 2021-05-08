@@ -1,5 +1,6 @@
 package interfaces;
 
+import Utils.CustomFont;
 import Utils.PlaySounds;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -26,7 +27,6 @@ public class AboutUs extends javax.swing.JFrame {
         devs_tittle = new javax.swing.JLabel();
         dev1_tittle = new javax.swing.JLabel();
         dev2_title = new javax.swing.JLabel();
-        dev3_title = new javax.swing.JLabel();
         dev4_title = new javax.swing.JLabel();
         dev5_title = new javax.swing.JLabel();
         dev6_tittle = new javax.swing.JLabel();
@@ -39,31 +39,27 @@ public class AboutUs extends javax.swing.JFrame {
 
         aboutus_content.setBackground(new java.awt.Color(52, 52, 60));
 
-        devs_tittle.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        devs_tittle.setFont(new CustomFont("ARCADE_I.TTF").font(1,25f));
         devs_tittle.setForeground(new java.awt.Color(155, 152, 152));
         devs_tittle.setText("Desarrolladores");
 
-        dev1_tittle.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        dev1_tittle.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
         dev1_tittle.setForeground(new java.awt.Color(155, 152, 152));
         dev1_tittle.setText("Juan D. Anzola Quiroga ");
 
-        dev2_title.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        dev2_title.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
         dev2_title.setForeground(new java.awt.Color(155, 152, 152));
-        dev2_title.setText("Mateo Aristizábal Serna ");
+        dev2_title.setText("Mateo Aristizabal Serna ");
 
-        dev3_title.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        dev3_title.setForeground(new java.awt.Color(155, 152, 152));
-        dev3_title.setText("Brancys A. Barrios Suarez");
-
-        dev4_title.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        dev4_title.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
         dev4_title.setForeground(new java.awt.Color(155, 152, 152));
         dev4_title.setText("Santiago Llenera Lancheros");
 
-        dev5_title.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        dev5_title.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
         dev5_title.setForeground(new java.awt.Color(155, 152, 152));
         dev5_title.setText("Edilberto M. Rodriguez Fontalvo");
 
-        dev6_tittle.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        dev6_tittle.setFont(new CustomFont("ARCADE_I.TTF").font(1,15f));
         dev6_tittle.setForeground(new java.awt.Color(155, 152, 152));
         dev6_tittle.setText("Miguel A. Altamar Rodriguez");
 
@@ -90,32 +86,30 @@ public class AboutUs extends javax.swing.JFrame {
                     .addGroup(aboutus_contentLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(aboutus_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dev3_title)
-                            .addComponent(dev4_title)
-                            .addComponent(dev5_title)
-                            .addComponent(dev6_tittle)
-                            .addComponent(dev1_tittle)
-                            .addComponent(dev2_title))))
-                .addContainerGap(537, Short.MAX_VALUE))
+                            .addComponent(dev1_tittle, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                            .addGroup(aboutus_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(dev5_title, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                                .addComponent(dev4_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dev2_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dev6_tittle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(540, Short.MAX_VALUE))
         );
         aboutus_contentLayout.setVerticalGroup(
             aboutus_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aboutus_contentLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(devs_tittle)
-                .addGap(13, 13, 13)
-                .addComponent(dev6_tittle)
+                .addGap(24, 24, 24)
+                .addComponent(dev6_tittle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dev1_tittle)
+                .addComponent(dev1_tittle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dev2_title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dev3_title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dev4_title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dev5_title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addComponent(dev2_title, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(dev5_title, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(dev4_title, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -176,7 +170,6 @@ public class AboutUs extends javax.swing.JFrame {
     private javax.swing.JPanel aboutus_content;
     private javax.swing.JLabel dev1_tittle;
     private javax.swing.JLabel dev2_title;
-    private javax.swing.JLabel dev3_title;
     private javax.swing.JLabel dev4_title;
     private javax.swing.JLabel dev5_title;
     private javax.swing.JLabel dev6_tittle;

@@ -13,6 +13,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
+import javax.sound.sampled.Clip;
 
 /**
  *
@@ -22,10 +23,12 @@ public abstract class Nivel {
 
     private Nivel siguiente;
     private LinkedList<Brick> bricks;
+    private Clip BgMusic;
 
     public Nivel(GameSpace ventana) {
         bricks = new LinkedList<>();
         siguiente = null;
+        BgMusic = null;
     }
 
     public Nivel getSiguiente() {
@@ -34,6 +37,14 @@ public abstract class Nivel {
 
     public void setSiguiente(Nivel siguiente) {
         this.siguiente = siguiente;
+    }
+
+    public Clip getBgMusic() {
+        return BgMusic;
+    }
+
+    public void setBgMusic(Clip BgMusic) {
+        this.BgMusic = BgMusic;
     }
 
     //Obtengo un ladrillo
