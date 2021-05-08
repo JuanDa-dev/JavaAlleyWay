@@ -53,19 +53,20 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="returnButton" min="-2" pref="136" max="-2" attributes="0"/>
                       <Component id="devs_tittle" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="dev3_title" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dev4_title" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dev5_title" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dev6_tittle" min="-2" max="-2" attributes="0"/>
-                              <Component id="dev1_tittle" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dev2_title" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="dev1_tittle" pref="219" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="dev5_title" alignment="0" pref="219" max="32767" attributes="0"/>
+                                  <Component id="dev4_title" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dev2_title" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dev6_tittle" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="537" max="32767" attributes="0"/>
+                  <EmptySpace pref="540" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -74,19 +75,17 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="devs_tittle" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                  <Component id="dev6_tittle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="dev6_tittle" min="-2" pref="43" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="dev1_tittle" min="-2" max="-2" attributes="0"/>
+                  <Component id="dev1_tittle" min="-2" pref="43" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="dev2_title" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="dev3_title" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="dev4_title" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="dev5_title" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="186" max="32767" attributes="0"/>
+                  <Component id="dev2_title" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="dev5_title" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="dev4_title" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace pref="98" max="32767" attributes="0"/>
                   <Component id="returnButton" min="-2" pref="51" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
@@ -96,8 +95,8 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="devs_tittle">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="22" style="0"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new CustomFont(&quot;ARCADE_I.TTF&quot;).font(1,25f)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="98" green="98" red="9b" type="rgb"/>
@@ -107,8 +106,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dev1_tittle">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="16" style="0"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new CustomFont(&quot;ARCADE_I.TTF&quot;).font(1,15f)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="98" green="98" red="9b" type="rgb"/>
@@ -118,30 +117,19 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dev2_title">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="16" style="0"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new CustomFont(&quot;ARCADE_I.TTF&quot;).font(1,15f)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="98" green="98" red="9b" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Mateo Aristiz&#xe1;bal Serna "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="dev3_title">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="16" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="98" green="98" red="9b" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Brancys A. Barrios Suarez"/>
+            <Property name="text" type="java.lang.String" value="Mateo Aristizabal Serna "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="dev4_title">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="16" style="0"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new CustomFont(&quot;ARCADE_I.TTF&quot;).font(1,15f)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="98" green="98" red="9b" type="rgb"/>
@@ -151,8 +139,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dev5_title">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="16" style="0"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new CustomFont(&quot;ARCADE_I.TTF&quot;).font(1,15f)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="98" green="98" red="9b" type="rgb"/>
@@ -162,8 +150,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dev6_tittle">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="16" style="0"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new CustomFont(&quot;ARCADE_I.TTF&quot;).font(1,15f)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="98" green="98" red="9b" type="rgb"/>

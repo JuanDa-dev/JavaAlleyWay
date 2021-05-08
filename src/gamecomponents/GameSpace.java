@@ -30,9 +30,6 @@ public class GameSpace extends JPanel {
     private Clip BgMusic;
 
     public GameSpace(ControlInterface ventana) {
-        PlaySounds clip = new PlaySounds("src\\dataSounds\\BackgroundMusic.wav");
-        this.BgMusic = clip.getClip();
-        BgMusic.loop(-1);
         this.setBackground(Color.darkGray);
         this.ventana = ventana;
         ball = new Ball(160, 480, this);
@@ -68,7 +65,7 @@ public class GameSpace extends JPanel {
     }
 
     public Clip getBgMusic() {
-        return BgMusic;
+        return nivel.getBgMusic();
     }
 
     public Nivel getNivel() {
@@ -100,10 +97,17 @@ public class GameSpace extends JPanel {
     }
 
     public void niveles() {
+        PlaySounds clipL1 = new PlaySounds("src\\dataSounds\\BackgroundMusicL1.wav");
+        PlaySounds clipL2 = new PlaySounds("src\\dataSounds\\BackgroundMusicL2.wav");
+        PlaySounds clipL3 = new PlaySounds("src\\dataSounds\\BackgroundMusicL3.wav");
         nivel = new Nivel1(this);
+        nivel.setBgMusic(clipL1.getClip());
         nivel.createBricks();
         nivel.setSiguiente(new Nivel2(this));
+        nivel.getSiguiente().setBgMusic(clipL2.getClip());
         nivel.getSiguiente().setSiguiente(new Nivel3(this));
+        nivel.getSiguiente().getSiguiente().setBgMusic(clipL3.getClip());
+        nivel.getBgMusic().loop(-1);
     }
 
     @Override
@@ -145,7 +149,7 @@ public class GameSpace extends JPanel {
 
     public void actualizar() {
         nivel.actualizar(ball, juego, getBounds(), table);
-        if (balls <= 0 || nivel.getSiguiente() == null) {
+        if (balls <= 0 || nivel == null) {
             gameOver();
         }
 
@@ -171,7 +175,9 @@ public class GameSpace extends JPanel {
     //Cuando se pasa un nivel del juego
     private void pasoNivel() {
         if (nivel.longitudArrayLadrillos() == 0) {//Si no quedan ladrillos, pasa al siguiente nivel
+            nivel.getBgMusic().close();
             nivel = nivel.getSiguiente();
+            nivel.getBgMusic().loop(-1);
             nivel.createBricks();
             table.setX(110);
             ball.setX(160);
@@ -186,7 +192,7 @@ public class GameSpace extends JPanel {
     }
 
     private void gameOver() {
-        BgMusic.stop();
+        nivel.getBgMusic().stop();
         PlaySounds Gover = new PlaySounds("src\\dataSounds\\GameOverSound.wav");
         Gover.getClip().start();
         ventana.getGameOver().setVisible(true);
