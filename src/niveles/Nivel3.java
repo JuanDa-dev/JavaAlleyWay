@@ -184,7 +184,15 @@ public class Nivel3 extends Nivel {
             Color colorRandom2 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
             Color color3 = this.getBrick(55).getColor();
             Color colorRandom3 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-            this.cambiarColoresNivel3(color, colorRandom, color2, colorRandom2, color3, colorRandom3);
+            for (int i = 0; i < this.longitudArrayLadrillos(); i++) {
+                if (this.getBrick(i).getColor().equals(color)) {
+                    this.getBrick(i).setColor(colorRandom);
+                } else if (this.getBrick(i).getColor().equals(color2)) {
+                    this.getBrick(i).setColor(colorRandom2);
+                } else if (this.getBrick(i).getColor().equals(color3)) {
+                    this.getBrick(i).setColor(colorRandom3);
+                }
+            }
         }
     }
 
