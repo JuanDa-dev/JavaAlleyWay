@@ -9,7 +9,6 @@ import gamecomponents.Ball;
 import gamecomponents.Brick;
 import gamecomponents.GameSpace;
 import gamecomponents.Table;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
@@ -75,25 +74,16 @@ public abstract class Nivel {
         this.bricks.clear();
     }
 
+    //Actualizo la pantalla
     public void actualizar(Ball ball, boolean mover, Rectangle limites, Table tabla) {
         ball.mover(mover, limites, tabla, bricks);
         tabla.mover(limites);
     }
 
+    //Creo los ladrillos
     public abstract void createBricks();
 
+    //Cambio de colores de los ladrillos
     public abstract void cambioColores();
-
-    public void cambiarColoresNivel3(Color color, Color colorRandom, Color color2, Color colorRandom2, Color color3, Color colorRandom3) {
-        for (Brick brick : bricks) {
-            if (brick.getColor().equals(color)) {
-                brick.setColor(colorRandom);
-            } else if (brick.getColor().equals(color2)) {
-                brick.setColor(colorRandom2);
-            } else if (brick.getColor().equals(color3)) {
-                brick.setColor(colorRandom3);
-            }
-        }
-    }
 
 }

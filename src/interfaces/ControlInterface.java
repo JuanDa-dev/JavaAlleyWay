@@ -24,6 +24,7 @@ public class ControlInterface extends javax.swing.JFrame {
     private LectorCSV csv;
     private boolean bPause;
     private boolean music;
+
     public ControlInterface() {
         initComponents();
         this.setSize(ANCHO, ALTO);
@@ -211,7 +212,6 @@ public class ControlInterface extends javax.swing.JFrame {
         username.setBounds(320, 220, 510, 70);
 
         Settings.setBounds(new java.awt.Rectangle(0, 0, 400, 200));
-        Settings.setPreferredSize(new java.awt.Dimension(400, 200));
         Settings.setResizable(false);
         Settings.getContentPane().setLayout(null);
 
@@ -338,7 +338,8 @@ public class ControlInterface extends javax.swing.JFrame {
         controls.add(musicbtn);
         musicbtn.setBounds(140, 60, 50, 40);
 
-        jButton6.setText("jButton6");
+        jButton6.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        jButton6.setText("Next");
         jButton6.setFocusable(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,7 +347,7 @@ public class ControlInterface extends javax.swing.JFrame {
             }
         });
         controls.add(jButton6);
-        jButton6.setBounds(140, 120, 50, 23);
+        jButton6.setBounds(140, 120, 50, 19);
 
         getContentPane().add(controls);
         controls.setBounds(700, 0, 200, 600);
@@ -377,7 +378,7 @@ public class ControlInterface extends javax.swing.JFrame {
         if (bPause) {
             pause();
         }
-        Settings.setBounds(this.getX()+200, this.getY()+200, 400, 200);
+        Settings.setBounds(this.getX() + 200, this.getY() + 200, 400, 200);
         Settings.setVisible(true);
     }//GEN-LAST:event_settingsbtnActionPerformed
 
@@ -385,7 +386,7 @@ public class ControlInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (!espacioDeJuego.isJuego()) {
             espacioDeJuego.getNivel().cambioColores();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Sólo se pueden cambiar los colores al inicio del juego");
         }
     }//GEN-LAST:event_changeColorbtnActionPerformed
@@ -426,7 +427,9 @@ public class ControlInterface extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        espacioDeJuego.getNivel().vaciarLadrillos();
+        if (espacioDeJuego.getNivel().getSiguiente() != null) {
+            espacioDeJuego.getNivel().vaciarLadrillos();
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
