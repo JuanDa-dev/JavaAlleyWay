@@ -59,6 +59,7 @@ public class Nivel2 extends Nivel {
         }
     }
 
+    //Basicamente lo mismo que hace el cambio de colores del nivel1 solo que con menos ladrillos
     @Override
     public void cambioColores() {
         if (this.longitudArrayLadrillos() == 96) {
