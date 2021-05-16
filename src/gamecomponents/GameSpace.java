@@ -195,7 +195,7 @@ public class GameSpace extends JPanel {
         nivel.getBgMusic().stop();
         PlaySounds Gover = new PlaySounds("src\\dataSounds\\GameOverSound.wav");
         Gover.getClip().start();
-        ventana.getGameOver().setVisible(true);
+        ventana.getGameOver().show();
         ventana.getHilo().stop();
     }
 

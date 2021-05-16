@@ -12,7 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -31,8 +31,8 @@ public class ControlInterface extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         bPause = false;
         music = true;
-        gameOver.setSize(ANCHO, ALTO);
-        gameOver.setLocationRelativeTo(null);
+        GameOver.setSize(ANCHO, ALTO);
+        GameOver.setLocationRelativeTo(null);
         pause.setSize(ANCHO, ALTO);
         this.setFocusable(true);
         this.setResizable(false);
@@ -45,8 +45,8 @@ public class ControlInterface extends javax.swing.JFrame {
         readScore();
     }
 
-    public JFrame getGameOver() {
-        return gameOver;
+    public JDialog getGameOver() {
+        return GameOver;
     }
 
     public Hilo getHilo() {
@@ -155,16 +155,16 @@ public class ControlInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gameOver = new javax.swing.JFrame();
-        gameover = new javax.swing.JLabel();
-        reset = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
         Settings = new javax.swing.JDialog(this, true);
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         changeColorbtn = new javax.swing.JButton();
         restartbtn = new javax.swing.JButton();
+        GameOver = new javax.swing.JDialog();
+        gameover1 = new javax.swing.JLabel();
+        reset = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        username = new javax.swing.JTextField();
         pause = new javax.swing.JPanel();
         pauseTitle = new javax.swing.JLabel();
         controls = new javax.swing.JPanel();
@@ -178,38 +178,6 @@ public class ControlInterface extends javax.swing.JFrame {
         scoreTitle = new javax.swing.JLabel();
         musicbtn = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-
-        gameOver.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        gameOver.setFocusable(false);
-        gameOver.setUndecorated(true);
-        gameOver.setOpacity(0.5F);
-        gameOver.getContentPane().setLayout(null);
-
-        gameover.setFont(new CustomFont("pdark.ttf").font(1, 60f));
-        gameover.setText("Game Over");
-        gameOver.getContentPane().add(gameover);
-        gameover.setBounds(180, 10, 540, 230);
-
-        reset.setFont(new CustomFont("pdark.ttf").font(1, 15f));
-        reset.setText("VOLVER A JUGAR");
-        reset.setFocusable(false);
-        reset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetActionPerformed(evt);
-            }
-        });
-        gameOver.getContentPane().add(reset);
-        reset.setBounds(190, 420, 230, 70);
-
-        jLabel4.setFont(new CustomFont("pdark.ttf").font(1, 30f));
-        jLabel4.setText("Username");
-        gameOver.getContentPane().add(jLabel4);
-        jLabel4.setBounds(40, 210, 270, 90);
-
-        username.setBackground(gameOver.getBackground());
-        username.setFont(new CustomFont("pdark.ttf").font(1,30f));
-        gameOver.getContentPane().add(username);
-        username.setBounds(320, 220, 510, 70);
 
         Settings.setBounds(new java.awt.Rectangle(0, 0, 400, 200));
         Settings.setResizable(false);
@@ -245,6 +213,38 @@ public class ControlInterface extends javax.swing.JFrame {
 
         Settings.getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 400, 300);
+
+        GameOver.setFocusable(false);
+        GameOver.setUndecorated(true);
+        GameOver.setOpacity(0.5F);
+        GameOver.setResizable(false);
+        GameOver.getContentPane().setLayout(null);
+
+        gameover1.setFont(new CustomFont("pdark.ttf").font(1, 60f));
+        gameover1.setText("Game Over");
+        GameOver.getContentPane().add(gameover1);
+        gameover1.setBounds(180, 10, 540, 230);
+
+        reset.setFont(new CustomFont("pdark.ttf").font(1, 15f));
+        reset.setText("VOLVER A JUGAR");
+        reset.setFocusable(false);
+        reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetActionPerformed(evt);
+            }
+        });
+        GameOver.getContentPane().add(reset);
+        reset.setBounds(190, 420, 230, 70);
+
+        jLabel5.setFont(new CustomFont("pdark.ttf").font(1, 30f));
+        jLabel5.setText("Username");
+        GameOver.getContentPane().add(jLabel5);
+        jLabel5.setBounds(40, 210, 270, 90);
+
+        username.setBackground(GameOver.getBackground());
+        username.setFont(new CustomFont("pdark.ttf").font(1,30f));
+        GameOver.getContentPane().add(username);
+        username.setBounds(320, 220, 510, 70);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AlleyWay");
@@ -355,22 +355,6 @@ public class ControlInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
-        if (!username.getText().equals("")) {
-            gameOver.setVisible(false);
-            this.remove(espacioDeJuego);
-            espacioDeJuego = new GameSpace(this);
-            espacioDeJuego.setBounds(0, 0, ANCHO - 200, ALTO);
-            this.add(espacioDeJuego);
-            hilo = new Hilo(espacioDeJuego);
-            hilo.start();
-            writeScore(username.getText(), scoreViewr.getText());
-            readScore();
-        } else {
-            System.out.println("usuario invalido");
-        }
-    }//GEN-LAST:event_resetActionPerformed
-
     private void settingsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsbtnActionPerformed
         // TODO add your handling code here:
         PlaySounds btnSound = new PlaySounds("src\\dataSounds\\ButtonSound.wav");
@@ -432,6 +416,22 @@ public class ControlInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
+        if (!username.getText().equals("")) {
+            GameOver.setVisible(false);
+            this.remove(espacioDeJuego);
+            espacioDeJuego = new GameSpace(this);
+            espacioDeJuego.setBounds(0, 0, ANCHO - 200, ALTO);
+            this.add(espacioDeJuego);
+            hilo = new Hilo(espacioDeJuego);
+            hilo.start();
+            writeScore(username.getText(), scoreViewr.getText());
+            readScore();
+        } else {
+            System.out.println("usuario invalido");
+        }
+    }//GEN-LAST:event_resetActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -471,15 +471,15 @@ public class ControlInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog GameOver;
     private javax.swing.JDialog Settings;
     private javax.swing.JLabel ball;
     private javax.swing.JButton changeColorbtn;
     private javax.swing.JPanel controls;
-    private javax.swing.JFrame gameOver;
-    private javax.swing.JLabel gameover;
+    private javax.swing.JLabel gameover1;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextArea leaderBoard;
     private javax.swing.JLabel leaderBoardTitle;
