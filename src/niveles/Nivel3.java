@@ -124,7 +124,7 @@ public class Nivel3 extends Nivel {
         }
     }
 
-    //Establezco los colore
+    //Establezco los colores de ladrillos que faltaron por estableces el color
     private void colores() {
         amarillo();
         morado();
@@ -174,16 +174,18 @@ public class Nivel3 extends Nivel {
         this.getBrick(108).setColor(new Color(233, 129, 233));
     }
 
+    //Cambio de colores de los ladrillos
     @Override
     public void cambioColores() {
         if (this.longitudArrayLadrillos() == 170) {
             Random random = new Random();
-            Color color = this.getBrick(0).getColor();
-            Color colorRandom = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+            Color color = this.getBrick(0).getColor();//Recupera el color de uno de los ladrillos
+            Color colorRandom = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));//Genero el nuevo color aleatorio
             Color color2 = this.getBrick(22).getColor();
             Color colorRandom2 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
             Color color3 = this.getBrick(55).getColor();
             Color colorRandom3 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+            //Comienzo el cambio de colores
             for (int i = 0; i < this.longitudArrayLadrillos(); i++) {
                 if (this.getBrick(i).getColor().equals(color)) {
                     this.getBrick(i).setColor(colorRandom);

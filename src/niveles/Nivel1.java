@@ -48,16 +48,17 @@ public class Nivel1 extends Nivel {
         }
     }
 
+    //cambio los colores de todos los ladrillos
     @Override
     public void cambioColores() {
         if (this.longitudArrayLadrillos() == 88) {
             int n = 22;
             for (int i = 0; i < 4; i++) {
                 Random random = new Random();
-                int red = random.nextInt(256);
+                int red = random.nextInt(256);//Genera un numero aleatorio entre 0 - 255
                 int green = random.nextInt(256);
                 int blue = random.nextInt(256);
-                Color color = new Color(red, green, blue);
+                Color color = new Color(red, green, blue);//Establezco el nuevo color
                 for (int j = n - 22; j < n; j++) {
                     this.getBrick(j).setColor(color);
                 }

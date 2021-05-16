@@ -71,7 +71,7 @@ public class Table {
         }
     }
 
-    protected String choque(Ball bola) {
+    public String choque(Ball bola) {
         if (bola.getY() + bola.getALTO() == this.getY()) {//La bola se acerca por arriba
             if (bola.getX() + bola.getALTO() >= this.getX() && bola.getX() <= this.getX() + this.getANCHO()) {//La bola golpea la tabla
                 return "up";//Va hacia arriba
