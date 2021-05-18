@@ -45,7 +45,7 @@ public class BrickTest {
     @Test
     public void testChoque() {
         System.out.println("choque");
-        Ball bola = new Ball(160, 40, null);
+        Ball bola = new Ball(160, 40);
         Brick instance = new Brick(175, 40, null);
         String expResult = "left";
         String result = instance.choque(bola);

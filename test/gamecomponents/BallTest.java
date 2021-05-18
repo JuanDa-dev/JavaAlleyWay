@@ -54,14 +54,14 @@ public class BallTest {
         Rectangle limites = new Rectangle(0, 0, 200, 400);//Limites del juego
         Table tabla = new Table(160, 80);
         LinkedList<Brick> ladrillos = new LinkedList<>();
-        Nivel nivel = new Nivel1(g);
+        Nivel nivel = new Nivel1();
         nivel.createBricks();//Creo los ladrillos
         //Añado los ladrillos
         for (int i = 0; i < nivel.longitudArrayLadrillos(); i++) {
             ladrillos.add(nivel.getBrick(i));
         }
-        Ball instance = new Ball(180, 65, g);
-        instance.mover(mover, limites, tabla, ladrillos);
+        Ball instance = new Ball(180, 65);
+        instance.mover(mover, limites, tabla, ladrillos, g);
         int resultadoEsperado = 64;
         int resultadoObtenido = instance.getY();
         assertEquals(resultadoEsperado, resultadoObtenido);

@@ -16,10 +16,6 @@ import java.util.Random;
  */
 public class Nivel3 extends Nivel {
 
-    public Nivel3(GameSpace ventana) {
-        super(ventana);
-    }
-
     @Override
     public void createBricks() {
         gorra();

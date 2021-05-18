@@ -43,7 +43,7 @@ public class TableTest {
     @Test
     public void testChoque() {
         System.out.println("choque");
-        Ball bola = new Ball(160, 80, null);//Como el balon golpea la tabla por arriba
+        Ball bola = new Ball(160, 80);//Como el balon golpea la tabla por arriba
         Table instance = new Table(150, 95);//Se espera que se devuelva por arriba
         String expResult = "up";
         String result = instance.choque(bola);

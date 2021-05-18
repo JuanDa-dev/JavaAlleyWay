@@ -32,7 +32,7 @@ public class GameSpace extends JPanel {
     public GameSpace(ControlInterface ventana) {
         this.setBackground(Color.darkGray);
         this.ventana = ventana;
-        ball = new Ball(160, 480, this);
+        ball = new Ball(160, 480);
         table = new Table(110, 530);
         balls = 3;
         score = 0;
@@ -100,12 +100,12 @@ public class GameSpace extends JPanel {
         PlaySounds clipL1 = new PlaySounds("src\\dataSounds\\BackgroundMusicL1.wav");
         PlaySounds clipL2 = new PlaySounds("src\\dataSounds\\BackgroundMusicL2.wav");
         PlaySounds clipL3 = new PlaySounds("src\\dataSounds\\BackgroundMusicL3.wav");
-        nivel = new Nivel1(this);
+        nivel = new Nivel1();
         nivel.setBgMusic(clipL1.getClip());
         nivel.createBricks();
-        nivel.setSiguiente(new Nivel2(this));
+        nivel.setSiguiente(new Nivel2());
         nivel.getSiguiente().setBgMusic(clipL2.getClip());
-        nivel.getSiguiente().setSiguiente(new Nivel3(this));
+        nivel.getSiguiente().setSiguiente(new Nivel3());
         nivel.getSiguiente().getSiguiente().setBgMusic(clipL3.getClip());
         nivel.getBgMusic().loop(-1);
     }
@@ -148,7 +148,7 @@ public class GameSpace extends JPanel {
     }
 
     public void actualizar() {
-        nivel.actualizar(ball, juego, getBounds(), table);
+        nivel.actualizar(ball, juego, getBounds(), table, this);
         if (balls <= 0 || nivel == null) {
             gameOver();
         }

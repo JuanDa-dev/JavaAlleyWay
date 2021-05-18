@@ -16,10 +16,6 @@ import java.util.Random;
  */
 public class Nivel1 extends Nivel {
 
-    public Nivel1(GameSpace ventana) {
-        super(ventana);
-    }
-
     @Override
     public void createBricks() {
         Color color = new Color(98, 187, 55);
