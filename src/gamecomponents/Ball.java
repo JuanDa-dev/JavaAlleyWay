@@ -10,13 +10,11 @@ public class Ball {
     private int x, y;
     private int cambioX = 1, cambioY = -1;
     private final int ANCHO = 15, ALTO = 15;
-    private GameSpace panel;
     private boolean generar;
 
-    public Ball(int x, int y, GameSpace panel) {
+    public Ball(int x, int y) {
         this.x = x;
         this.y = y;
-        this.panel = panel;
         generar = true;
     }
 
@@ -52,15 +50,11 @@ public class Ball {
         this.cambioY = cambioY;
     }
 
-    public GameSpace getPanel() {
-        return panel;
-    }
-
     public Ellipse2D getPelota() {
         return new Ellipse2D.Double(x, y, ANCHO, ALTO);
     }
 
-    public void mover(boolean mover, Rectangle limites, Table tabla, LinkedList<Brick> ladrillos) {
+    public void mover(boolean mover, Rectangle limites, Table tabla, LinkedList<Brick> ladrillos, GameSpace panel) {
         if (mover) {
             x += cambioX;
             y += cambioY;

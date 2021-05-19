@@ -24,7 +24,7 @@ public abstract class Nivel {
     private LinkedList<Brick> bricks;
     private Clip BgMusic;
 
-    public Nivel(GameSpace ventana) {
+    public Nivel() {
         bricks = new LinkedList<>();
         siguiente = null;
         BgMusic = null;
@@ -75,8 +75,8 @@ public abstract class Nivel {
     }
 
     //Actualizo la pantalla
-    public void actualizar(Ball ball, boolean mover, Rectangle limites, Table tabla) {
-        ball.mover(mover, limites, tabla, bricks);
+    public void actualizar(Ball ball, boolean mover, Rectangle limites, Table tabla, GameSpace panel) {
+        ball.mover(mover, limites, tabla, bricks, panel);
         tabla.mover(limites);
     }
 
