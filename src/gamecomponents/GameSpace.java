@@ -17,6 +17,11 @@ import niveles.Nivel;
 import niveles.Nivel1;
 import niveles.Nivel2;
 import niveles.Nivel3;
+ 
+/**
+ * Esta clase nos permite dibujar el sketch donde el jugador interactúa con los
+ * objetos del juego
+ */
 
 public class GameSpace extends JPanel {
 
@@ -28,6 +33,11 @@ public class GameSpace extends JPanel {
     private final Table table;
     private ControlInterface ventana;
     private Clip BgMusic;
+
+    /**
+     * Referenciamos e instanciamos los atributos necesarios para que la clase funcione
+     * @param ventana Referencia al Frame ControlInterface para la aparición de la ventana
+     */
 
     public GameSpace(ControlInterface ventana) {
         this.setBackground(Color.darkGray);
@@ -96,6 +106,12 @@ public class GameSpace extends JPanel {
         this.maxPoderes = maxPoderes;
     }
 
+    /**
+     * Establecemos el método niveles, con sus respectivos atributos
+     * y la funcionalidad de pasar al siguiente nivel
+     * También se determina que música de fondo tiene cada nivel
+     */
+
     public void niveles() {
         PlaySounds clipL1 = new PlaySounds("src\\dataSounds\\BackgroundMusicL1.wav");
         PlaySounds clipL2 = new PlaySounds("src\\dataSounds\\BackgroundMusicL2.wav");
@@ -119,7 +135,11 @@ public class GameSpace extends JPanel {
         this.actualizar();
 
     }
-
+    /**
+     *  Método que se encarga de dibujar en pantalla cada uno de los componentes
+     * necesarios del juego
+     * @param g Hace referencia a la clase objeto graphics (g)
+     */
     public void paint(Graphics2D g) {
         g.fillOval(ball.getX(), ball.getY(), ball.getANCHO(), ball.getALTO());
         g.fillRect(table.getX(), table.getY(), table.getANCHO(), table.getALTO());
@@ -146,6 +166,10 @@ public class GameSpace extends JPanel {
             }
         }
     }
+
+    /**
+     * Método que se encarga de actualizar en tiempo real el entorno de juego
+     */
 
     public void actualizar() {
         nivel.actualizar(ball, juego, getBounds(), table, this);

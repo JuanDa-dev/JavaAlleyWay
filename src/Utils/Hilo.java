@@ -6,10 +6,6 @@ import java.util.logging.Logger;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- *
- * @author Santiago Llerena
- */
 public class Hilo extends Thread {
 
     private GameSpace espacioDeJuego;

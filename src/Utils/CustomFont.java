@@ -5,10 +5,6 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- *
- * @author Santiago Llerena
- */
 public class CustomFont {
 
     private Font font = null;

@@ -1,16 +1,12 @@
 package gamecomponents;
 
-/**
- *
- * @author Santiago Llerena
- */
 public class Power {
 
     protected float x, y, dy;
     final Poder poder;
     final int DIAMETRO = 20;
-//    protected MoveThread hilo;
-//
+    // protected MoveThread hilo;
+    //
 
     public Power(float x, float y, Poder poder) {
         this.x = x;

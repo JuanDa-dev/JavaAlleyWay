@@ -1,9 +1,5 @@
 package Utils;
 
-/**
- *
- * @author Santiago Llerena
- */
 public class StringUtil {
 
     public static String[] splitCadena(String cadena, String separador) {

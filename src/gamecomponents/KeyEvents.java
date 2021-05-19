@@ -12,7 +12,9 @@ public class KeyEvents extends KeyAdapter {
     public KeyEvents(ControlInterface ventana) {
         this.ventana = ventana;
     }
-
+    /**
+     * Obtenemos las teclas presionadas por el jugador
+     */
     @Override
     public void keyPressed(KeyEvent ke) {
         int id = ke.getKeyCode();
@@ -28,7 +30,9 @@ public class KeyEvents extends KeyAdapter {
             ventana.pause();
         }
     }
-
+    /**
+     * Obtenemos las teclas que son liberadas por el usuario
+     */
     @Override
     public void keyReleased(KeyEvent ke) {
         int id = ke.getKeyCode();

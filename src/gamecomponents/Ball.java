@@ -4,6 +4,11 @@ import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.util.LinkedList;
 import main.App;
+ 
+/**
+ * Clase que modela la bola del juego, donde definimos todos los atributos
+ * necesarios
+ */
 
 public class Ball {
 
@@ -11,6 +16,10 @@ public class Ball {
     private int cambioX = 1, cambioY = -1;
     private final int ANCHO = 15, ALTO = 15;
     private boolean generar;
+
+    /**
+     * Referenciamos e instanciamos los atributos necesarios para la clase
+     */
 
     public Ball(int x, int y) {
         this.x = x;
@@ -54,6 +63,10 @@ public class Ball {
         return new Ellipse2D.Double(x, y, ANCHO, ALTO);
     }
 
+    /*
+    Esta clase se encarga de modelar el movimiento de la pelota y la tabla, 
+    además de evaluar los diferentes choques con los ladrillos y la tabla para generar movimiento
+     */
     public void mover(boolean mover, Rectangle limites, Table tabla, LinkedList<Brick> ladrillos, GameSpace panel) {
         if (mover) {
             x += cambioX;

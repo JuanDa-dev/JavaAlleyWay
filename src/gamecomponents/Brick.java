@@ -72,6 +72,11 @@ public class Brick {
         return "";//No golpea la tabla
     }
 
+    /**
+     * Esta clase le asocia un determinado poder a un ladrillo aleatorio
+     * @return el poder generado, puede ser Life o Star 
+     */
+
     public Power generarPoder() {
         int i = (int) (Math.random() * 10);
         if (App.poder == null) {
